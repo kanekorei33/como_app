@@ -1,24 +1,54 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 開発言語
+* Ruby3.0.4
+* Rails6.1.6
 
-Things you may want to cover:
+<br>
 
-* Ruby version
+# 就職Termの技術
+* devise
+* rails_admin
+* お気に入り機能
 
-* System dependencies
 
-* Configuration
+<br>
 
-* Database creation
+# カリキュラム外の技術
+* ransackによる検索機能
 
-* Database initialization
+<br>
 
-* How to run the test suite
+# 実行手順
+```
+$ git clone git@github.com:kanekorei33/como_app.git
+$ cd como_app
+$ bundle
+$ rails db:create && rails db:migrate
+$ rails s
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+<br>
 
-* Deployment instructions
+# カタログ設計
+https://docs.google.com/spreadsheets/d/1nhSXbNsuatUEeAiULUpoDlXjt1I1HQIeGpQiNAahQC4/edit?usp=sharing
 
-* ...
+<br>
+
+# テーブル定義書
+https://docs.google.com/spreadsheets/d/1nhSXbNsuatUEeAiULUpoDlXjt1I1HQIeGpQiNAahQC4/edit?usp=sharing
+
+<br>
+
+# ワイヤーフレーム
+https://prottapp.com/app/#/projects/62f1cd7e86e4657181797c76
+
+<br>
+
+# ER図
+![ER](readme/COMOgamensenizu.jpg)
+
+<br>
+
+# 画面遷移図
+![Screen](readme/er.png)
