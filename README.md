@@ -7,10 +7,11 @@
 <br>
 
 # 就職Termの技術
-* devise
+
 * rails_admin
 * お気に入り機能
-
+* Ajaxによるコメント機能
+* OAuthによるGoogleログイン機能
 
 <br>
 
@@ -46,9 +47,9 @@ https://prottapp.com/app/#/projects/62f1cd7e86e4657181797c76
 <br>
 
 # ER図
-![ER](readme/COMOgamensenizu.jpg)
+![ER](readme/erzu.png)
 
 <br>
 
 # 画面遷移図
-![Screen](readme/er.png)
+![Screen](readme/COMOgamensenizu.jpg)
