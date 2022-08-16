@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root "parks#index"
   resources :categories
   resources :playgrounds
   resources :institutions

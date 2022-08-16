@@ -17,10 +17,8 @@ ActiveRecord::Schema.define(version: 2022_08_16_183938) do
 
   create_table "categories", force: :cascade do |t|
     t.string "type", null: false
-    t.bigint "comment_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["comment_id"], name: "index_categories_on_comment_id"
   end
 
   create_table "comment_categories", force: :cascade do |t|
@@ -120,7 +118,6 @@ ActiveRecord::Schema.define(version: 2022_08_16_183938) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "categories", "comments"
   add_foreign_key "comment_categories", "categories"
   add_foreign_key "comment_categories", "comments"
   add_foreign_key "comments", "parks"

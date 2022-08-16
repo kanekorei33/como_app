@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_filter :store_location
+  skip_before_action :store_location
   skip_before_action :login_required, only: %i[new create]
 
   def new
@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id
-      rredirect_back_or root_url
+      redirect_back_or root_url
     else
       flash.now[:dangre] = "ログインに失敗しました"
       render :new
