@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    models:
+      blog: ブログ
+      user: ユーザー
+    attributes:
+      blog:
+        title: タイトル
+        content: 内容
+      user:
+        title: タイトル
+        name: 名前
+        email: メールアドレス
+        current_password: 現在のパスワード
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        remember_me: ログインを記憶
+#models:の下に作成したモデル名の日本語、attributes:の下のモデル名
+#の下には設定したカラムの日本語名を書くことで日本語化がなされます。

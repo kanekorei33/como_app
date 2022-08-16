@@ -1,0 +1,21 @@
+<h1>Profile editing</h1>
+
+  <%= form_with(model: @user, local: true) do |f| %>
+    <%= f.label :name %><p>
+    <%= f.text_field :name %><p>
+
+    <%= f.label :email %><p>
+    <%= f.email_field :email %><p>
+
+    <%= f.label :password %><p>
+    <%= f.password_field :password %><p>
+
+    <%= f.label :password_confirmation %><p>
+    <%= f.password_field :password_confirmation %><p>
+      <p>プロフィール画像をアップロード</p>
+    <!--<%= f.file_field :image %><p>
+    <%= f.hidden_field :image_cache %><p>-->
+
+
+    <%= f.submit "Edit my account" %>
+  <% end %>
