@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @playground.name %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @playground.image %>
+</p>
+
+<%= link_to 'Edit', edit_playground_path(@playground) %> |
+<%= link_to 'Back', playgrounds_path %>
