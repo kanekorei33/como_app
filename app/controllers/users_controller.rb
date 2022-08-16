@@ -9,15 +9,22 @@ class UsersController < ApplicationController
   def create
     @user =User.new(user_params)
     if @user.save
-      redirect_to user_path(@user.id)
+      session[:user_id] = @user.id
+      flash[:success] = "ユーザー登録しました"
+      redirect_back_or root_url
+    #else
+    #  redirect_to user_path(@user.id)
     else
+      flash.now[:danger] = "ユーザー登録に失敗しました"
       render :new
     end
   end
 
   def show
   #  binding.irb
+  redirect_to parks_path unless params[:id] == current_user.id.to_s
   @user = User.find(params[:id])
+  @parks = @user.parks
   end
 
   def edit

@@ -1,6 +1,12 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
   before_action :login_required
+  before_filter :store_location #userがログイン前にいた場所を覚えておく
+
+  def store_location
+    session[return_to] = request.url
+  end
+
   private
 
   def login_required
