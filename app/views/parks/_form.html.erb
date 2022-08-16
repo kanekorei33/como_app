@@ -1,0 +1,107 @@
+<%= form_with(model: park) do |form| %>
+  <% if park.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(park.errors.count, "error") %> prohibited this park from being saved:</h2>
+
+      <ul>
+        <% park.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Introduction %>
+    <%= form.text_area :Introduction %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :prefecture %>
+    <%= form.text_field :prefecture %>
+  </div>
+
+  <div class="field">
+    <%= form.label :latitude %>
+    <%= form.text_field :latitude %>
+  </div>
+
+  <div class="field">
+    <%= form.label :longitude %>
+    <%= form.text_field :longitude %>
+  </div>
+
+  <div class="field">
+    <%= form.label :main_image %>
+    <%= form.text_area :main_image %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sub_image1 %>
+    <%= form.text_area :sub_image1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sub_image2 %>
+    <%= form.text_area :sub_image2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sub_image3 %>
+    <%= form.text_area :sub_image3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sub_image4 %>
+    <%= form.text_area :sub_image4 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sub_image5 %>
+    <%= form.text_area :sub_image5 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sub_image6 %>
+    <%= form.text_area :sub_image6 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sub_image7 %>
+    <%= form.text_area :sub_image7 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sub_image8 %>
+    <%= form.text_area :sub_image8 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sub_image9 %>
+    <%= form.text_area :sub_image9 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sub_image10 %>
+    <%= form.text_area :sub_image10 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sub_image11 %>
+    <%= form.text_area :sub_image11 %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

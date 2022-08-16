@@ -1,0 +1,61 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Parks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Introduction</th>
+      <th>Address</th>
+      <th>Prefecture</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Main image</th>
+      <th>Sub image1</th>
+      <th>Sub image2</th>
+      <th>Sub image3</th>
+      <th>Sub image4</th>
+      <th>Sub image5</th>
+      <th>Sub image6</th>
+      <th>Sub image7</th>
+      <th>Sub image8</th>
+      <th>Sub image9</th>
+      <th>Sub image10</th>
+      <th>Sub image11</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @parks.each do |park| %>
+      <tr>
+        <td><%= park.name %></td>
+        <td><%= park.Introduction %></td>
+        <td><%= park.address %></td>
+        <td><%= park.prefecture %></td>
+        <td><%= park.latitude %></td>
+        <td><%= park.longitude %></td>
+        <td><%= park.main_image %></td>
+        <td><%= park.sub_image1 %></td>
+        <td><%= park.sub_image2 %></td>
+        <td><%= park.sub_image3 %></td>
+        <td><%= park.sub_image4 %></td>
+        <td><%= park.sub_image5 %></td>
+        <td><%= park.sub_image6 %></td>
+        <td><%= park.sub_image7 %></td>
+        <td><%= park.sub_image8 %></td>
+        <td><%= park.sub_image9 %></td>
+        <td><%= park.sub_image10 %></td>
+        <td><%= park.sub_image11 %></td>
+        <td><%= link_to 'Show', park %></td>
+        <td><%= link_to 'Edit', edit_park_path(park) %></td>
+        <td><%= link_to 'Destroy', park, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Park', new_park_path %>
