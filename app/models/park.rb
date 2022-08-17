@@ -5,4 +5,5 @@ class Park < ApplicationRecord
   has_many :park_institutions
   has_many :playgrounds, through: :park_playgrounds, source: :playground
   has_many :park_playgrounds
+  has_many :comments
 end
