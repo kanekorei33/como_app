@@ -1,13 +1,20 @@
 <h1><%= @user.nickname %>のページ</h1>
 
-			<p>ユーザーアイコン</p>
-			<% if @user.image.present? %>
-				<%= image_tag @user.image.url %>
-			<% else %>
-				<%= image_tag 'default.png' %>
-			<% end %>
+<p>ユーザーアイコン</p>
+	<% if @user.image.present? %>
+		<%= image_tag @user.image.url %>
+	<% else %>
+		<%= image_tag 'default.png' %>
+	<% end %>
 
-			<p>メールアドレス: <%= @user.email %></p>
+<p>メールアドレス: <%= @user.email %></p>
 
 
-			<%= link_to_if(true, 'plofile_Edit', edit_user_path(@user)) %>
+<%= link_to_if(true, 'plofile_Edit', edit_user_path(@user)) %>
+
+<p>お気に入りの公園</p>
+	<% if @favorite_list.present? %>
+    <% @favorite_list.each do |park| %>
+			<%= park.name %>
+    <% end %>
+  <% end %>

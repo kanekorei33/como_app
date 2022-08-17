@@ -112,7 +112,7 @@ ActiveRecord::Schema.define(version: 2022_08_16_183938) do
     t.string "password_digest"
     t.text "image"
     t.string "profile"
-    t.boolean "admin"
+    t.boolean "admin", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true

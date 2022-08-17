@@ -8,6 +8,7 @@ class ParksController < ApplicationController
 
   # GET /parks/1 or /parks/1.json
   def show
+    @favorite = current_user.favorites.find_by(park_id: @park.id)
   end
 
   # GET /parks/new
@@ -65,6 +66,6 @@ class ParksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def park_params
-      params.require(:park).permit(:name, :Introduction, :address, :prefecture, :latitude, :longitude, :main_image, :sub_image1, :sub_image2, :sub_image3, :sub_image4, :sub_image5, :sub_image6, :sub_image7, :sub_image8, :sub_image9, :sub_image10, :sub_image11)
+      params.require(:park).permit(:name, :introduction, :address, :prefecture, :latitude, :longitude, :main_image, :sub_image1, :sub_image2, :sub_image3, :sub_image4, :sub_image5, :sub_image6, :sub_image7, :sub_image8, :sub_image9, :sub_image10, :sub_image11)
     end
 end

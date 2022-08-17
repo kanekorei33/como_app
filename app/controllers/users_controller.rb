@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :store_location
-  skip_before_action :login_required, only: %i[new create]
+  skip_before_action :login_required, only: %i[new show create]
   before_action :set_user, only: %i[show edit update]
 
   def new
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:success] = "ユーザー登録しました"
-      redirect_back_or root_url
+      redirect_back_or user_path(user.id)
     #else
     #  redirect_to user_path(@user.id)
     else
@@ -23,9 +23,11 @@ class UsersController < ApplicationController
 
   def show
   #  binding.irb
-  redirect_to parks_path unless params[:id] == current_user.id.to_s
+  #redirect_to parks_path unless params[:id] == current_user.id.to_s
   @user = User.find(params[:id])
-  @parks = @user.parks
+  #@parks = @user.parks
+  favorites = Favorite.where(user_id: current_user.id).pluck(:park_id)
+  @favorite_list = Park.find(favorites)
   end
 
   def edit
