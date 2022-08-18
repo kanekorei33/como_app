@@ -65,6 +65,6 @@ class PlaygroundsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def playground_params
-      params.require(:playground).permit(:name, :image)
+      params.require(:playground).permit(:name, :image, :image_cache)
     end
 end

@@ -26,6 +26,8 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'launchy'
+  gem 'carrierwave'
+  gem 'mini_magick'
 end
 
 group :development do

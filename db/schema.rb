@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2022_08_16_183938) do
 
   create_table "parks", force: :cascade do |t|
     t.string "name", null: false
-    t.text "Introduction", null: false
+    t.text "introduction", null: false
     t.string "address", null: false
     t.string "prefecture"
     t.float "latitude"
