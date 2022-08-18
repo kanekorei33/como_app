@@ -6,6 +6,8 @@ class Park < ApplicationRecord
   has_many :playgrounds, through: :park_playgrounds, source: :playground
   has_many :park_playgrounds
   has_many :comments
+  has_many :comment_categories, through: :comments, source: :comment_categories
+  
   mount_uploader :main_image,ImageUploader
   mount_uploader :sub_image1,ImageUploader
   mount_uploader :sub_image2,ImageUploader

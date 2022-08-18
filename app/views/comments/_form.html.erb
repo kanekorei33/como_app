@@ -1,5 +1,5 @@
 <h1> komento toukouM</h1>
-<%= form_with(model: [park,comment]) do |form| %>
+<%= form_with(model: [:park,comment]) do |form| %>
   <% if comment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
@@ -11,6 +11,7 @@
       </ul>
     </div>
   <% end %>
+  <%= form.collection_select :category_id, Category.all, :id, :name, :prompt => "投稿のカテゴリを選択してください" %>
 
   <div class="field">
     <%= form.label :content %>

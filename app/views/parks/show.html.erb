@@ -40,9 +40,22 @@
   <strong>Main image:</strong>
   <%= image_tag @park.main_image.url %>
 </p>
+  <strong> 施設</strong>
+  <% @park.institutions.each do |linstitution| %>
+    <td><%= institution.name %></td>
+    <td><%= image_tag institution.image.url%>|</td>
+  <% end %>
+  <strong> 遊具</strong>
+  <% @park.playgrounds.each do |playground| %>
+    <td><%= playground.name %></td>
+    <td><%= image_tag playground.image.url%>|</td>
+  <% end %>
 
 <% @park.comments.each do |comment|%>
   <p><%=comment.user.nickname%>
+    <% comment.comment_categories.each do |comment_categories|%>
+      <p><%= comment_categories.name %></p>
+    <% end %>
   <p><%= comment.content%></p>
   <%= image_tag comment.image.url if comment.image.present?%>
   <%= link_to 'この口コミにコメントする', park_comment_path(comment) %>

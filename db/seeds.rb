@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.create!([
   { name:"青野", nickname:"あおえもん", email:"test_1@example.com", password: "123456" },
-  { name:"遠藤", nickname:"太郎さん", email:"test_2@example.com", password: "123456" },
+  { name:"遠藤", nickname:"太郎さ〜ん", email:"test_2@example.com", password: "123456" },
   { name:"門脇", nickname:"ケントくん", email:"test_3@example.com", password: "123456" },
   { name:"金子", nickname:"nekomama", email:"test_4@example.com", password: "123456" },
-  { name:"齋藤", nickname:"斉藤さ〜ん", email:"test_5@example.com", password: "123456" },
+  { name:"齋藤", nickname:"さいとうさ〜ん", email:"test_5@example.com", password: "123456" },
   { name:"佐藤", nickname:"さいきょう〜", email:"test_6@example.com", password: "123456" },
   { name:"鈴木", nickname:"スズキ先生〜", email:"test_7@example.com", password: "123456" },
   { name:"中村", nickname:"中村先生〜", email:"test_8@example.com", password: "123456" },
@@ -27,3 +27,20 @@ Park.create!([
   { name:"山鼻どんぐり公園",introduction:"小さな公園", address:"北海道札幌市中央区南18条西13丁目2", main_image: File.open("./public/park_image/yamahanadonguri.jpg")},
 ])
 
+Category.create!([
+  { name:"イベント情報" },
+  { name:"周辺情報" },
+  { name:"公園情報" },
+  { name:"あそぼ〜！" },
+])
+
+Playground.create!([
+  { name:"ブランコ", image: File.open("./public/playgraund_image/ブランコ.png")},
+  { name:"シーソー", image: File.open("./public/playgraund_image/シーソー.png")},
+])
+
+Institution.create!([
+  { name:"トイレ", image: File.open("./public/playgraund_image/うんてい.png")},
+  { name:"授乳室", image: File.open("./public/playgraund_image/鉄棒.png")},
+  { name:"じゃぶじゃぶ池", image: File.open("./public/playgraund_image/砂場.png")},
+])
