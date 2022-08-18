@@ -41,6 +41,16 @@
   <%= image_tag @park.main_image.url %>
 </p>
 
+<% @park.comments.each do |comment|%>
+  <p><%=comment.user.nickname%>
+  <p><%= comment.content%></p>
+  <%= image_tag comment.image.url if comment.image.present?%>
+  <%= link_to 'この口コミにコメントする', park_comment_path(comment) %>
+  <%= link_to '編集', edit_park_comment_path(comment) %>
+  <%= link_to '消去', park_comment_path(comment), method: :delete, remote: true, data: { confirm: "本当に削除しますか?"} %></p>
+<% end %>
 
-<%= link_to 'Edit', edit_park_path(@park) %> |
+<%= link_to '口コミを投稿！', new_park_comment_path(@park) %>
+
+
 <%= link_to 'Back', parks_path %>
