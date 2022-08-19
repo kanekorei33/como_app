@@ -53,10 +53,8 @@
 
 <% @park.comments.each do |comment|%>
   <p><%=comment.user.nickname%>
-    <% comment.comment_categories.each do |comment_categories|%>
-      <p><%= comment_categories.name %></p>
-    <% end %>
-  <p><%= comment.content%></p>
+    <p><%= comment.category.name %></p>
+    <p><%= comment.content%></p>
   <%= image_tag comment.image.url if comment.image.present?%>
   <%= link_to 'この口コミにコメントする', park_comment_path(comment) %>
   <%= link_to '編集', edit_park_comment_path(comment) %>
