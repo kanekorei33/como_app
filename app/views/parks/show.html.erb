@@ -41,7 +41,7 @@
   <%= image_tag @park.main_image.url %>
 </p>
   <strong> 施設</strong>
-  <% @park.institutions.each do |linstitution| %>
+  <% @park.institutions.each do |institution| %>
     <td><%= institution.name %></td>
     <td><%= image_tag institution.image.url%>|</td>
   <% end %>

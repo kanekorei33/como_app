@@ -28,6 +28,11 @@
         <td><%= park.longitude %></td>
         <td><%= image_tag (park.main_image.url) %></td>
 
+        <% park.playgrounds.each do |playground| %>
+        <% #binding.pry %>
+          <td><%= playground.name %></td>
+        <% end %>
+
         <td><%= link_to 'Show', park %></td>
         <td><%= link_to 'Edit', edit_park_path(park) %></td>
         <td><%= link_to 'Destroy', park, method: :delete, data: { confirm: 'Are you sure?' } %></td>

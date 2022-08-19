@@ -101,6 +101,16 @@
     <%= form.file_field :sub_image11 %>
   </div>
 
+  <div class="field">
+    <%= form.label :playground %>
+    <%= form.collection_check_boxes(:playground_ids, Playground.all, :id, :name) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :institution %>
+    <%= form.collection_check_boxes(:institution_ids, Institution.all, :id, :name) %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
