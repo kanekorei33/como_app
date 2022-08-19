@@ -14,7 +14,7 @@
     <% @institutions.each do |institution| %>
       <tr>
         <td><%= institution.name %></td>
-        <td><%= institution.image %></td>
+        <td><%= image_tag (institution.image.url) %></td>
         <td><%= link_to 'Show', institution %></td>
         <td><%= link_to 'Edit', edit_institution_path(institution) %></td>
         <td><%= link_to 'Destroy', institution, method: :delete, data: { confirm: 'Are you sure?' } %></td>

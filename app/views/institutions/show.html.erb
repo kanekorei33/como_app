@@ -7,7 +7,7 @@
 
 <p>
   <strong>Image:</strong>
-  <%= @institution.image %>
+  <%= image_tag @institution.image.url %>
 </p>
 
 <%= link_to 'Edit', edit_institution_path(@institution) %> |

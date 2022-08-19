@@ -2,12 +2,17 @@ class PostsController < ApplicationController
   before_action :set_comment, only: [:create, :edit, :update]
 
   def create
+
     @post = @comment.posts.build(post_params)
+    @post.user_id = current_user.id
     respond_to do |format|
+
+
     if @post.save
+  
         format.js { render :index }
       else
-        format.html { redirect_to comment_path(@comment), notice: '投稿できませんでした...' }
+        format.html { redirect_to park_comment_path(:park, @comment), notice: '投稿できませんでした...' }
       end
     end
   end

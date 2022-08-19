@@ -41,22 +41,22 @@
   <%= image_tag @park.main_image.url %>
 </p>
   <strong> 施設</strong>
-  <% #@park.institutions.each do |linstitution| %>
-    <td><%#= institution.name %></td>
-    <td><%#= image_tag institution.image.url%>|</td>
-  <% #end %>
+  <% @park.institutions.each do |linstitution| %>
+    <td><%= institution.name %></td>
+    <td><%= image_tag institution.image.url%>|</td>
+  <% end %>
   <strong> 遊具</strong>
-  <% #@park.playgrounds.each do |playground| %>
-    <td><%#= playground.name %></td>
-    <td><%#= image_tag playground.image.url%>|</td>
-  <% #end %>
+  <% @park.playgrounds.each do |playground| %>
+    <td><%= playground.name %></td>
+    <td><%= image_tag playground.image.url%>|</td>
+  <% end %>
 
 <% @park.comments.each do |comment|%>
   <p><%=comment.user.nickname%>
     <p><%= comment.category.name %></p>
     <p><%= comment.content%></p>
   <%= image_tag comment.image.url if comment.image.present?%>
-  <%= link_to 'この口コミにコメントする', park_comment_path(comment) %>
+  <%= link_to 'この口コミにコメントする', park_comment_path(@park, comment) %>
   <%= link_to '編集', edit_park_comment_path(comment) %>
   <%= link_to '消去', park_comment_path(comment), method: :delete, remote: true, data: { confirm: "本当に削除しますか?"} %></p>
 <% end %>

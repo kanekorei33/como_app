@@ -44,3 +44,4 @@ Institution.create!([
   { name:"授乳室", image: File.open("./public/playgraund_image/鉄棒.png")},
   { name:"じゃぶじゃぶ池", image: File.open("./public/playgraund_image/砂場.png")},
 ])
+

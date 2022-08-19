@@ -15,7 +15,7 @@
     <% @playgrounds.each do |playground| %>
       <tr>
         <td><%= playground.name %></td>
-        <td><%= playground.image %></td>
+        <td><%= image_tag (playground.image.url) %></td>
         <td><%= link_to 'Show', playground %></td>
         <td><%= link_to 'Edit', edit_playground_path(playground) %></td>
         <td><%= link_to 'Destroy', playground, method: :delete, data: { confirm: 'Are you sure?' } %></td>
