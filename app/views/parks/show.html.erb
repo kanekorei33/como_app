@@ -12,8 +12,8 @@
 </p>
 
 <p>
-  <strong>Introduction:</strong>
-  <%= @park.Introduction %>
+  <strong>introduction:</strong>
+  <%= @park.introduction %>
 </p>
 
 <p>
@@ -38,63 +38,30 @@
 
 <p>
   <strong>Main image:</strong>
-  <%= @park.main_image %>
+  <%= image_tag @park.main_image.url %>
 </p>
+  <strong> 施設</strong>
+  <% @park.institutions.each do |institution| %>
+    <td><%= institution.name %></td>
+    <td><%= image_tag institution.image.url%>|</td>
+  <% end %>
+  <strong> 遊具</strong>
+  <% @park.playgrounds.each do |playground| %>
+    <td><%= playground.name %></td>
+    <td><%= image_tag playground.image.url%>|</td>
+  <% end %>
 
-<p>
-  <strong>Sub image1:</strong>
-  <%= @park.sub_image1 %>
-</p>
+<% @park.comments.each do |comment|%>
+  <p><%=comment.user.nickname%>
+    <p><%= comment.category.name %></p>
+    <p><%= comment.content%></p>
+  <%= image_tag comment.image.url if comment.image.present?%>
+  <%= link_to 'この口コミにコメントする', park_comment_path(@park, comment) %>
+  <%= link_to '編集', edit_park_comment_path(comment) %>
+  <%= link_to '消去', park_comment_path(comment), method: :delete, remote: true, data: { confirm: "本当に削除しますか?"} %></p>
+<% end %>
 
-<p>
-  <strong>Sub image2:</strong>
-  <%= @park.sub_image2 %>
-</p>
+<%= link_to '口コミを投稿！', new_park_comment_path(@park) %>
 
-<p>
-  <strong>Sub image3:</strong>
-  <%= @park.sub_image3 %>
-</p>
 
-<p>
-  <strong>Sub image4:</strong>
-  <%= @park.sub_image4 %>
-</p>
-
-<p>
-  <strong>Sub image5:</strong>
-  <%= @park.sub_image5 %>
-</p>
-
-<p>
-  <strong>Sub image6:</strong>
-  <%= @park.sub_image6 %>
-</p>
-
-<p>
-  <strong>Sub image7:</strong>
-  <%= @park.sub_image7 %>
-</p>
-
-<p>
-  <strong>Sub image8:</strong>
-  <%= @park.sub_image8 %>
-</p>
-
-<p>
-  <strong>Sub image9:</strong>
-  <%= @park.sub_image9 %>
-</p>
-
-<p>
-  <strong>Sub image10:</strong>
-  <%= @park.sub_image10 %>
-</p>
-
-<p>
-  <strong>Sub image11:</strong>
-  <%= @park.sub_image11 %>
-</p>
-
-<%= link_to 'Edit', edit_park_path(@park) %> |
 <%= link_to 'Back', parks_path %>

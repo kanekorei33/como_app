@@ -11,4 +11,5 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorite_parks, through: :favorites, source: :park
   has_many :comments
+  mount_uploader :image, ImageUploader
 end

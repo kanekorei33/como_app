@@ -10,24 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_16_183938) do
+ActiveRecord::Schema.define(version: 2022_08_19_062729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
-    t.string "type", null: false
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "comment_categories", force: :cascade do |t|
-    t.bigint "comment_id", null: false
-    t.bigint "category_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["category_id"], name: "index_comment_categories_on_category_id"
-    t.index ["comment_id"], name: "index_comment_categories_on_comment_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -37,6 +28,8 @@ ActiveRecord::Schema.define(version: 2022_08_16_183938) do
     t.bigint "park_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "category_id", null: false
+    t.index ["category_id"], name: "index_comments_on_category_id"
     t.index ["park_id"], name: "index_comments_on_park_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -77,7 +70,7 @@ ActiveRecord::Schema.define(version: 2022_08_16_183938) do
 
   create_table "parks", force: :cascade do |t|
     t.string "name", null: false
-    t.text "Introduction", null: false
+    t.text "introduction", null: false
     t.string "address", null: false
     t.string "prefecture"
     t.float "latitude"
@@ -105,6 +98,17 @@ ActiveRecord::Schema.define(version: 2022_08_16_183938) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.bigint "comment_id", null: false
+    t.bigint "user_id", null: false
+    t.text "content"
+    t.text "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["comment_id"], name: "index_posts_on_comment_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "nickname"
@@ -118,8 +122,7 @@ ActiveRecord::Schema.define(version: 2022_08_16_183938) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "comment_categories", "categories"
-  add_foreign_key "comment_categories", "comments"
+  add_foreign_key "comments", "categories"
   add_foreign_key "comments", "parks"
   add_foreign_key "comments", "users"
   add_foreign_key "favorites", "parks"
@@ -128,4 +131,6 @@ ActiveRecord::Schema.define(version: 2022_08_16_183938) do
   add_foreign_key "park_institutions", "parks"
   add_foreign_key "park_playgrounds", "parks"
   add_foreign_key "park_playgrounds", "playgrounds"
+  add_foreign_key "posts", "comments"
+  add_foreign_key "posts", "users"
 end

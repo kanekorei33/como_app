@@ -7,7 +7,7 @@
 
 <p>
   <strong>Image:</strong>
-  <%= @playground.image %>
+  <%= image_tag @playground.image.url %>
 </p>
 
 <%= link_to 'Edit', edit_playground_path(@playground) %> |

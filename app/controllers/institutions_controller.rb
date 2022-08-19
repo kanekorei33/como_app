@@ -65,6 +65,6 @@ class InstitutionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def institution_params
-      params.require(:institution).permit(:name, :image)
+      params.require(:institution).permit(:name, :image, :image_cache)
     end
 end

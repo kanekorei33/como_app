@@ -1,3 +1,4 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -7,8 +8,17 @@
 
 <p>
   <strong>Image:</strong>
-  <%= @comment.image %>
+  <%= image_tag @comment.image.url if @comment.image.present?%>
 </p>
 
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+<p>コメント一覧</p>
+
+  <!-- このcomments_areaというHTMLのidを取得して、そのdivの部分だけを更新する -->
+  <div id="posts_area">
+    <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
+    <%= render partial: 'posts/index', locals: { posts: @posts, comment: @comment } %>
+  </div>
+  <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
+    <%= render partial: 'posts/form', locals: { post: @post, comment: @comment } %>
+
+</div>
