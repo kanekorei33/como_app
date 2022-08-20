@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:success] = "ユーザー登録しました"
-      redirect_back_or user_path(@user.id)
+      redirect_to session[:previous_url]
     #else
     #  redirect_to user_path(@user.id)
     else

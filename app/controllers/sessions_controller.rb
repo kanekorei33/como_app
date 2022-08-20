@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
   #skip_before_action :login_required, only: %i[new create]
 
   def new
+    session[:previous_url] = request.referer
   end
 
   def create
