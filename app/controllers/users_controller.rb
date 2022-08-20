@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :store_location
   #skip_before_action :login_required, only: %i[new show create]
   before_action :set_user, only: %i[show edit update]
+  action :admin_user
 
   def new
     @user = User.new
