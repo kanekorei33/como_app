@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :store_location
   #skip_before_action :login_required, only: %i[new show create]
   before_action :set_user, only: %i[show edit update]
+  action :admin_user
 
   def new
     @user = User.new
@@ -60,6 +61,15 @@ class UsersController < ApplicationController
     unless User.find(params[:id]).user.id.to_i == current_user.id
       redirect_to pictures_path(current_user)
       flash[:notice] = "権限がありません"
+    end
+  end
+
+  def admin_user
+    if current_user.admin?
+      ridirect_to rails_admin_path
+    else
+      ridirect_to root_path,
+      notice: '管理者以外はアクセスできません'
     end
   end
 end
