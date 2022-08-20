@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root "parks#index"
+  root "tops#index"
+  resources :tops, only: [:index]
   resources :categories
   resources :playgrounds
   resources :institutions
