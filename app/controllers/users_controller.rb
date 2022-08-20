@@ -63,15 +63,6 @@ class UsersController < ApplicationController
       flash[:notice] = "権限がありません"
     end
   end
-
-  def admin_user
-    if current_user.admin?
-      ridirect_to rails_admin_path
-    else
-      ridirect_to root_path,
-      notice: '管理者以外はアクセスできません'
-    end
-  end
 end
 
 
