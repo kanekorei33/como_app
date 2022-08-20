@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :store_location
-  skip_before_action :login_required, only: %i[new show create]
+  #skip_before_action :login_required, only: %i[new show create]
   before_action :set_user, only: %i[show edit update]
 
   def new
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:success] = "ユーザー登録しました"
-      redirect_back_or user_path(user.id)
+      redirect_back_or user_path(@user.id)
     #else
     #  redirect_to user_path(@user.id)
     else

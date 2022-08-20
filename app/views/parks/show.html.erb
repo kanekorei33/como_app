@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<% unless @park.user_id == current_user.id %>
+<% if logged_in? %>
   <% if @favorite.present? %>
     <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
   <% else %>
@@ -56,13 +56,19 @@
     <p><%= comment.category.name %></p>
     <p><%= comment.content%></p>
   <%= image_tag comment.image.url if comment.image.present?%>
-
+<% if logged_in? %>
   <%= link_to 'この口コミにコメントする', park_comment_path(@park, comment) %>
   <%= link_to '編集', edit_park_comment_path(comment) %>
   <%= link_to '消去', park_comment_path(comment), method: :delete, remote: true, data: { confirm: "本当に削除しますか?"} %></p>
+<% else%>
+  <%= link_to 'ログインしてこの口コミにコメントする', new_session_path %>
 <% end %>
 
+<% if logged_in? %>
 <%= link_to '口コミを投稿！', new_park_comment_path(@park) %>
-
+<% else%>
+  <%= link_to 'ログインして口コミを投稿する！', new_session_path %>
+<% end %>
+<% end %>
 
 <%= link_to 'Back', parks_path %>

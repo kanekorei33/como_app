@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   def store_location
     session[:return_to] = request.url
+    #user.save[:return_to] = request.url
   end
 
   #private

@@ -22,7 +22,7 @@ class ParksController < ApplicationController
 
   # POST /parks or /parks.json
   def create
-    @park = current_user.parks.build(park_params) if logged_in?
+    @park = Park.new(park_params) if logged_in?
 
     respond_to do |format|
       if @park.save
