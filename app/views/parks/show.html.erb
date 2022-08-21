@@ -22,24 +22,10 @@
 </p>
 
 <p>
-  <strong>Prefecture:</strong>
-  <%= @park.prefecture %>
-</p>
-
-<p>
-  <strong>Latitude:</strong>
-  <%= @park.latitude %>
-</p>
-
-<p>
-  <strong>Longitude:</strong>
-  <%= @park.longitude %>
-</p>
-
-<p>
   <strong>Main image:</strong>
   <%= image_tag @park.main_image.url %>
 </p>
+
   <strong> 施設</strong>
   <% @park.institutions.each do |institution| %>
     <td><%= institution.name %></td>
@@ -50,6 +36,7 @@
     <td><%= playground.name %></td>
     <td><%= image_tag playground.image.url%>|</td>
   <% end %>
+
 <p><strong> 口コミ投稿</strong></P>
 
   <% @park.comments.each do |comment|%>

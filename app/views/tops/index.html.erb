@@ -3,4 +3,14 @@
 
 
 
-<%= "遊具から公園を検索！" %>
+<h1> 遊具から公園を検索！ </h1>
+
+<p><strong> 施設</strong></p>
+  <% @institutions.each do |institution| %>
+    <%= institution.name %>
+  <% end %>
+
+<p><strong> 遊具</strong></p>
+  <% @playgrounds.each do |playground| %>
+    <%= playground.name %>
+  <% end %>
