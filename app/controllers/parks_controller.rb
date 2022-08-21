@@ -2,9 +2,25 @@ class ParksController < ApplicationController
   before_action :set_park, only: %i[ show edit update destroy ]
 
   # GET /parks or /parks.json
+  def top
+    @playgrounds = Playground.all  #施設と遊具の情報を持ってくる
+    @institutions = Institution.all
+    @parks_search = Park.ransack(params[:q])
+    @parks = @parks_search.result
+    @parks = @parks.where(park_institutions: Institution.where(institution_id: params[:q][:institution_id])) if params[:q].present? && params[:q][:name].present?
+  end
+
   def index
     @parks = Park.all
   end
+
+  # def search
+  #   @q = Park.ransack(params[:q]) # 送られてきたパラメータを元にテーブルからデータを検索する
+  #   @parks = Park.all
+  #   @parks = @q.result.includes(:playgrounds, :institutions) # 検索結果をActiveRecord_Relationのオブジェクトに変換
+  #   @parks = @results # 検索結果を@usersに代入し、index画面に引き継ぐ
+  #   render :root_path
+  # end
 
   # GET /parks/1 or /parks/1.json
   def show

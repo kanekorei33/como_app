@@ -4,6 +4,9 @@ class CommentsController < ApplicationController
   # GET /comments or /comments.json
   def index
     @comments = Comment.all
+    #@q = Comment.ransack(params[:q])
+    @comments = @q.result(distinct: true).includes(:comment).page(params[:page]).order("created_at desc")
+  end
   end
 
   # GET /comments/1 or /comments/1.json
