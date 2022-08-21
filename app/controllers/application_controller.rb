@@ -8,6 +8,11 @@ class ApplicationController < ActionController::Base
     #user.save[:return_to] = request.url
   end
 
+  def admin_user
+    redirect_to(root_path) unless current_user.admin?
+    #notice: "管理者以外はアクセスできません"
+  end
+
   # def check
   #   if current_user&.admin?
   #     redirect_to rails_admin_path

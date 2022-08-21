@@ -1,6 +1,6 @@
 class TopsController < ApplicationController
   def index
-    #施設と遊具の情報を持ってくる＠playgrounds = Playground.all
-    #＠institutions = institution.all
+    @playgrounds = Playground.all  #施設と遊具の情報を持ってくる
+    @institutions = Institution.all
   end
 end
