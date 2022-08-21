@@ -51,6 +51,7 @@
     <td><%= image_tag playground.image.url%>|</td>
   <% end %>
 <p><strong> 口コミ投稿</strong></P>
+
   <% @park.comments.each do |comment|%>
     <p><%=comment.user.nickname%>
     <p><%= comment.category.name %></p>
