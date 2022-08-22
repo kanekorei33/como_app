@@ -11,7 +11,7 @@
 * rails_admin
 * お気に入り機能
 * Ajaxによるコメント機能
-* OAuthによるGoogleログイン機能
+
 
 <br>
 

@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     resources :comments do
       resources :posts
     end
+    collection do
+      get 'search'
+    end
   end
   resources :users
   resources :users, only: [:show] do
@@ -19,5 +22,9 @@ Rails.application.routes.draw do
   end
   resources :sessions, only: %i[new create destroy]
   resources :favorites, only: [:create, :destroy]
-
+  resources :comments do
+    collection do
+      get 'search'
+    end
+  end
 end

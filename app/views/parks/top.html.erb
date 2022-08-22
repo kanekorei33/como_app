@@ -5,28 +5,15 @@
 
 <h1> 遊具から公園を検索！ </h1>
 
-<%= search_form_for @parks_search do |f| %>
-  <%= f.label :institutions_id, '施設' %>
-  <%= f.collection_check_boxes :institutions_id, @institutions, :id, :name  %>
-  <br>
-  <%= f.submit '検索' %>
+<%= search_form_for @parks_search, url: search_parks_path do |f| %>
+  <% Institution.all.each do |institution| %>
+    <%= f.check_box :institutions_id_eq_any, { multiple: true, checked: institution[:checked], disabled: institution[:disabled], include_hidden: false }, institution[:id] %>
+    <label><%= institution.name %></label>
+    <% end %>
+  <% Playground.all.each do |playground|%>
+    <%= f.check_box :playgrounds_id_eq_any, { multiple: true, checked: playground[:checked], disabled: playground[:disabled], include_hidden: false }, playground[:id] %>
+    <label><%= playground.name %></label>
+  <% end %>
+  <%= f.submit "検索" %>
 <% end %>
 
-
-
-<%= f.check_box :category_ids, { multiple: true, checked: category[:checked], disabled: category[:disabled], include_hidden: false }, category[:id] %> 
-<%#= f.label :category_ids, category.name, class:"label-bg", value: category[:id]%>
-
-
-
-
-
-<p><strong> 施設</strong></p>
-  <% @institutions.each do |institution| %>
-    <%= institution.name %>
-  <% end %>
-
-<p><strong> 遊具</strong></p>
-  <% @playgrounds.each do |playground| %>
-    <%= playground.name %>
-  <% end %>
