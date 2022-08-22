@@ -39,8 +39,15 @@
 
 <p><strong> 口コミ投稿</strong></P>
 
+<p><strong>カテゴリ検索</strong></P>
+<%= search_form_for @q, url: search_comments_path do |f| %>
+<%= f.collection_select :category_id_eq, Category.all, :id, :name, :prompt => "検索したいカテゴリを選択してください" %>
+<br>
+<%= f.submit '検索' %>
+<% end %>
+
   <% @park.comments.each do |comment|%>
-    <p><%=comment.user.nickname%>
+    <p><%= comment.user.nickname %>
     <p><%= comment.category.name %></p>
     <p><%= comment.content%></p>
     <%= image_tag comment.image.url if comment.image.present?%>
@@ -58,6 +65,5 @@
   <% else%>
     <%= link_to 'ログインして口コミを投稿する！', new_session_path %>
   <% end %>
-
 
 <%= link_to 'Back', parks_path %>

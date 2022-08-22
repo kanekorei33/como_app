@@ -29,6 +29,7 @@ class UsersController < ApplicationController
   #@parks = @user.parks
   favorites = Favorite.where(user_id: current_user.id).pluck(:park_id)
   @favorite_list = Park.find(favorites)
+  @comments = @user.comments
   end
 
   def edit

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get "/admin", to: "application#check"
   mount RailsAdmin::Engine => '/admins', as: 'rails_admin'
-  
+
   root "parks#top"
 
   resources :categories

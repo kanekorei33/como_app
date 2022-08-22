@@ -24,6 +24,11 @@ class ParksController < ApplicationController
   # GET /parks/1 or /parks/1.json
   def show
     @favorite = current_user.favorites.find_by(park_id: @park.id) if logged_in?
+    @comments = Comment.all
+    @category = Category.all
+    @q = Comment.ransack(params[:q])
+    @comments = @q.result #railsで使える形式に変換
+    @comments = Comments.where(Categiry.where(category_id: params[:q][:icategory_id])) if params[:q].present? && params[:q][:name].present?
   end
 
   # GET /parks/new
