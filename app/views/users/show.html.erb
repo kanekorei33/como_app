@@ -10,20 +10,10 @@
 <p>メールアドレス: <%= @user.email %></p>
 <%= link_to_if(true, 'plofile_Edit', edit_user_path(@user)) %>
 
-<h1><%= @user.nickname %>のページ</h1>
- <% @comments.each do |comment| %>
-      <tr>
-        <td><%= comment.category.name %></td>
-        <td><%= comment.content %></td>
-        <td><%= image_tag comment.image %></td>
-        <td><%= link_to 'Show', comment %></td>
-        <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
 <p>お気に入りの公園</p>
 	<% if @favorite_list.present? %>
     <% @favorite_list.each do |park| %>
-			<%= park.name %>
+		  <p><%= park.name %>
+			<%= link_to "この公園ページへ行く", park_path(park) %></p>
     <% end %>
   <% end %>
