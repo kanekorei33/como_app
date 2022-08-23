@@ -2,13 +2,33 @@ class ParksController < ApplicationController
   before_action :set_park, only: %i[ show edit update destroy ]
 
   # GET /parks or /parks.json
+  def top
+    @playgrounds = Playground.all  #施設と遊具の情報を持ってくる
+    @institutions = Institution.all
+    @parks_search = Park.ransack(params[:q])
+    @parks = @parks_search.result
+    @parks = @parks.where(park_institutions: Institution.where(institution_id: params[:q][:institution_id])) if params[:q].present? && params[:q][:name].present?
+    @parks = @parks.where(park_playgrounds: playground.where(playground_id: params[:q][:playground_id])) if params[:q].present? && params[:q][:name].present?
+  end
+    
   def index
     @parks = Park.all
+  end
+
+  def search
+    @q = Park.ransack(params[:q]) # 送られてきたパラメータを元にテーブルからデータを検索する
+    @parks = @q.result.includes(:playgrounds, :institutions) # 検索結果をActiveRecord_Relationのオブジェクトに変換
+    render :index#park
   end
 
   # GET /parks/1 or /parks/1.json
   def show
     @favorite = current_user.favorites.find_by(park_id: @park.id) if logged_in?
+    @comments = Comment.all
+    @category = Category.all
+    @q = Comment.ransack(params[:q])
+    @comments = @q.result #railsで使える形式に変換
+    @comments = Comments.where(Categiry.where(category_id: params[:q][:icategory_id])) if params[:q].present? && params[:q][:name].present?
   end
 
   # GET /parks/new

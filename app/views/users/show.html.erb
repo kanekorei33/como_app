@@ -8,13 +8,12 @@
 	<% end %>
 
 <p>メールアドレス: <%= @user.email %></p>
-
-
 <%= link_to_if(true, 'plofile_Edit', edit_user_path(@user)) %>
 
 <p>お気に入りの公園</p>
 	<% if @favorite_list.present? %>
     <% @favorite_list.each do |park| %>
-			<%= park.name %>
+		  <p><%= park.name %>
+			<%= link_to "この公園ページへ行く", park_path(park) %></p>
     <% end %>
   <% end %>

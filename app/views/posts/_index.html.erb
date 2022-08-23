@@ -1,5 +1,5 @@
 <ul class="delete-marker-fix">
-  <% posts.each do |post| %>
+  <% posts&.each do |post| %>
     <% if post.id.present? %>
       <li>
         <div class="post-content" id ="this_post_<%= post.id %>"></div>

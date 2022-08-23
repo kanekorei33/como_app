@@ -4,12 +4,24 @@ class CommentsController < ApplicationController
   # GET /comments or /comments.json
   def index
     @comments = Comment.all
+    @q = Comment.ransack(params[:q])
+    # @category = Category.all
+    # @q = Comment.ransack(params[:q])
+    # @comments = @q.result #railsで使える形式に変換
+    # @comments = Comments.where(Categiry.where(category_id: params[:q][:icategory_id])) if params[:q].present? && params[:q][:name].present?
+  end
+
+  def search
+    @q = Comment.ransack(params[:q]) # 送られてきたパラメータを元にテーブルからデータを検索する
+    @comments = @q.result.includes(:categories) # 検索結果をActiveRecord_Relationのオブジェクトに変換
+    render :show#park
   end
 
   # GET /comments/1 or /comments/1.json
   def show
     @posts = @comment.posts
     @post = @comment.posts.build
+    @park = @comment.park
   end
 
   # GET /comments/new
