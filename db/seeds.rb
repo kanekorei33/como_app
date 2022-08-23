@@ -19,7 +19,8 @@ User.create!([
   { name:"森塚", nickname:"森塚ちゃん", email:"test_11@example.com", password: "123456" },
   { name:"山田", nickname:"山田先生〜", email:"test_12@example.com", password: "123456" },
   { name:"吉田", nickname:"吉田くん", email:"test_13@example.com", password: "123456" },
-])
+  { name:"ゲストユーザー", nickname:"ゲストさん", email:"test@example.com", password: "123456" },
+  ])
 
 Park.create!([
   { name:"伏見もいわ山公園",introduction:"2017年にできた比較的新しい公園です。中央に滑り台ができる丘があり、休日や学校終わりなど子供達で賑わっています。", address:"北海道札幌市中央区南17条西16丁目6", main_image: File.open("./public/park_image/fushimimoiwayama.jpg")},

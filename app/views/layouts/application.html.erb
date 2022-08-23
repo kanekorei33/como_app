@@ -24,6 +24,7 @@
       <%= link_to "ログイン", new_session_path %>
     <% end %>
       <%= link_to "管理者ページ", rails_admin_path %>
+      <%= link_to 'ゲストユーザー', guest_path, method: :post, class: 'btn btn-success' %>
     <%= yield %>
   </body>
 </html>

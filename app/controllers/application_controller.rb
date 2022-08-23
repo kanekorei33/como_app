@@ -14,6 +14,14 @@ class ApplicationController < ActionController::Base
     #notice: "管理者以外はアクセスできません"
   end
 
+  def log_in(user)
+    session[:user_id] = user.id
+  end
+
+  def guest_user
+    current_user == User.find_by(email: 'test@example.com')
+  end
+
   private
 
   def admin_url?
