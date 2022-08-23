@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
   # GET /comments or /comments.json
   def index
     @comments = Comment.all
+    @q = Comment.ransack(params[:q])
     # @category = Category.all
     # @q = Comment.ransack(params[:q])
     # @comments = @q.result #railsで使える形式に変換
