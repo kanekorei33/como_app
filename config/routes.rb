@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
+  root "parks#top"
   get "/admin", to: "application#check"
   mount RailsAdmin::Engine => '/admins', as: 'rails_admin'
-
-  root "parks#top"
+  post '/guest', to: 'guest_sessions#create'
 
   resources :categories
   resources :playgrounds
