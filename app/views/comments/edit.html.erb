@@ -1,4 +1,6 @@
 <h1>Editing Comment</h1>
 
 <%= render 'form', comment: @comment %>
-<%= link_to 'Back', park_path(@comment) %>
+
+<%= link_to 'Show', park_path(@comment) %> |
+<%= link_to 'Back', comments_path %>

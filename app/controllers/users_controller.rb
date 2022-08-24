@@ -14,8 +14,6 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       flash[:success] = "ユーザー登録しました"
       redirect_to session[:previous_url]
-    #else
-    #  redirect_to user_path(@user.id)
     else
       flash.now[:danger] = "ユーザー登録に失敗しました"
       render :new

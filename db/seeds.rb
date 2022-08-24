@@ -22,6 +22,31 @@ User.create!([
   { name:"ゲストユーザー", nickname:"ゲストさん", email:"test@example.com", password: "123456" },
   ])
 
+  Playground.create!([
+    { name:"ブランコ", image: File.open("./public/playgraund_images/ブランコ.jpg")},
+    { name:"すべり台", image: File.open("./public/playgraund_images/すべり台.jpg")},
+    { name:"砂場", image: File.open("./public/playgraund_images/砂場.jpg")},
+    { name:"うんてい", image: File.open("./public/playgraund_images/うんてい.jpg")},
+    { name:"のぼり棒", image: File.open("./public/playgraund_images/のぼり棒.jpg")},
+    { name:"シーソー", image: File.open("./public/playgraund_images/シーソー.jpg")},
+    { name:"ジャングルジム", image: File.open("./public/playgraund_images/ジャングルジム.jpg")},
+    { name:"ターザンロープ", image: File.open("./public/playgraund_images/ターザンロープ.jpg")},
+    { name:"コンビネーション遊具", image: File.open("./public/playgraund_images/コンビネーション.jpg")},
+    { name:"ボルダリング", image: File.open("./public/playgraund_images/ボルダリング.jpg")},
+    { name:"バケット型ブランコ", image: File.open("./public/playgraund_images/バケット型ブランコ.jpg")},
+  ])
+  
+  Institution.create!([
+    { name:"トイレ", image: File.open("./public/institution_images/トイレ.jpg")},
+    { name:"男女兼用トイレ", image: File.open("./public/institution_images/男女兼用トイレ.jpg")},
+    { name:"だれでもトイレ", image: File.open("./public/institution_images/だれでもトイレ.jpg")},
+    { name:"おむつ替え台", image: File.open("./public/institution_images/おむつ替え台.jpg")},
+    { name:"水飲み台", image: File.open("./public/institution_images/水飲み台.jpg")},
+    { name:"授乳室", image: File.open("./public/institution_images/授乳室.jpg")},
+    { name:"じゃぶじゃぶ池", image: File.open("./public/institution_images/じゃぶじゃぶ池.jpg")},
+    { name:"駐車場", image: File.open("./public/institution_images/駐車場.jpg")},
+  ])
+
 Park.create!([
   { name:"伏見もいわ山公園",introduction:"2017年にできた比較的新しい公園です。中央に滑り台ができる丘があり、休日や学校終わりなど子供達で賑わっています。", address:"北海道札幌市中央区南17条西16丁目6", main_image: File.open("./public/park_image/fushimimoiwayama.jpg")},
   { name:"幌西自転車公園",introduction:"園内に自転車コースが設置されており、自転車の練習ができます。", address:"北海道札幌市中央区南14条西18丁目3", main_image: File.open("./public/park_image/horonisijitensya.jpg")},
@@ -43,28 +68,4 @@ Category.create!([
   { name:"あそぼ〜！" },
 ])
 
-Playground.create!([
-  { name:"ブランコ", image: File.open("./public/playgraund_image/ブランコ.png")},
-  { name:"滑り台", image: File.open("./public/playgraund_image/シーソー.png")},
-  { name:"砂場", image: File.open("./public/playgraund_image/シーソー.png")},
-  { name:"うんてい", image: File.open("./public/playgraund_image/シーソー.png")},
-  { name:"のぼり棒", image: File.open("./public/playgraund_image/シーソー.png")},
-  { name:"シーソー", image: File.open("./public/playgraund_image/シーソー.png")},
-  { name:"ジャングルジム", image: File.open("./public/playgraund_image/シーソー.png")},
-  { name:"ターザンロープ", image: File.open("./public/playgraund_image/シーソー.png")},
-  { name:"コンビネーション遊具", image: File.open("./public/playgraund_image/シーソー.png")},
-  { name:"ボルダリング", image: File.open("./public/playgraund_image/シーソー.png")},
-  { name:"バケット型ブランコ", image: File.open("./public/playgraund_image/シーソー.png")},
-])
-
-Institution.create!([
-  { name:"トイレ", image: File.open("./public/playgraund_image/うんてい.png")},
-  { name:"男女兼用トイレ", image: File.open("./public/playgraund_image/うんてい.png")},
-  { name:"だれでもトイレ", image: File.open("./public/playgraund_image/うんてい.png")},
-  { name:"おむつ替え台", image: File.open("./public/playgraund_image/うんてい.png")},
-  { name:"水飲み台", image: File.open("./public/playgraund_image/うんてい.png")},
-  { name:"授乳室", image: File.open("./public/playgraund_image/鉄棒.png")},
-  { name:"じゃぶじゃぶ池", image: File.open("./public/playgraund_image/砂場.png")},
-  { name:"駐車場", image: File.open("./public/playgraund_image/うんてい.png")},
-])
 

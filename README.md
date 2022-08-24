@@ -47,7 +47,7 @@ https://prottapp.com/app/#/projects/62f1cd7e86e4657181797c76
 <br>
 
 # ER図
-![ER](readme/erzu.png)
+![ER](readme/comoer.png)
 
 <br>
 

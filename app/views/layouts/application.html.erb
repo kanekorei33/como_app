@@ -11,10 +11,6 @@
   </head>
 
   <body>
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
-
     <%= link_to 'COMO', root_path %>
     <% if logged_in? %>
       <%= link_to "マイページ", user_path(current_user.id) %>
@@ -25,6 +21,10 @@
     <% end %>
       <%= link_to "管理者ページ", rails_admin_path %>
       <%= link_to 'ゲストユーザー', guest_path, method: :post, class: 'btn btn-success' %>
+
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "#{key}") %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
