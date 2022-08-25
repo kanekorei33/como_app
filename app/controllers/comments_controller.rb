@@ -13,8 +13,9 @@ class CommentsController < ApplicationController
 
   def search
     @q = Comment.ransack(params[:q]) # 送られてきたパラメータを元にテーブルからデータを検索する
-    @comments = @q.result.includes(:categories) # 検索結果をActiveRecord_Relationのオブジェクトに変換
-    render :show#park
+    @comments = @q.result.includes(:category) # 検索結果をActiveRecord_Relationのオブジェクトに変換
+    @park = @comments.first.park
+    render "parks/show"
   end
 
   # GET /comments/1 or /comments/1.json
@@ -31,6 +32,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/1/edit
   def edit
+    @comment = Comment.find(params[:id])
   end
 
   # POST /comments or /comments.json

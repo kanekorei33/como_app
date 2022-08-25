@@ -9,11 +9,6 @@ class ApplicationController < ActionController::Base
     #user.save[:return_to] = request.url
   end
 
-  def admin_user
-    redirect_to(root_path) unless current_user.admin?
-    #notice: "管理者以外はアクセスできません"
-  end
-
   def log_in(user)
     session[:user_id] = user.id
   end
@@ -29,6 +24,6 @@ class ApplicationController < ActionController::Base
   end
 
   def admin_required
-    redirect_to request.url.sub(/admin.*/, ""), notice: "管理者以外はアクセス不可！" unless current_user.admin?
+    redirect_to request.url.sub(/admin.*/, ""), notice: "管理者以外はアクセス不可！" unless current_user&.admin?
   end
 end
