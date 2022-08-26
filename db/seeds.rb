@@ -31,7 +31,7 @@ Institution.create!([
   { name:"水飲み台", image: File.open("./public/institution_images/水飲み台.jpg")},
   { name:"授乳室", image: File.open("./public/institution_images/授乳室.jpg")},
   { name:"じゃぶじゃぶ池", image: File.open("./public/institution_images/じゃぶじゃぶ池.jpg")},
-  { name:"駐車場", image: File.open("./public/institution_images/駐車場.jpg")},
+  { name:"駐車場", image: File.open("./public/institution_images/駐車場.jpg")}
   ])
 
 Playground.create!([
@@ -47,15 +47,15 @@ Playground.create!([
   { name:"ボルダリング", image: File.open("./public/playgraund_images/ボルダリング.jpg")},
   { name:"バケット型ブランコ", image: File.open("./public/playgraund_images/バケット型ブランコ.jpg")},
   { name:"鉄棒", image: File.open("./public/playgraund_images/鉄棒.jpg")},
-  { name:"スプリング遊具", image: File.open("./public/playgraund_images/スプリング遊具.jpg")},
+  { name:"スプリング遊具", image: File.open("./public/playgraund_images/スプリング遊具.jpg")}
   ])
 
 Park.create!([
-  # { name:"伏見もいわ山公園",
-  #   introduction:"2017年にできた比較的新しい公園です。中央に滑り台ができる丘があり、休日や学校終わりなど子供達で賑わっています。",
-  #   address:"北海道札幌市中央区南17条西16丁目6",
-  #   main_image: File.open("./public/park_image/fushimimoiwayama.jpg"),
-  #   institution_ids: [5], playground_ids: [1, 2, 6, 7, 8, 9, 10]},
+  { name:"伏見もいわ山公園",
+    introduction:"2017年にできた比較的新しい公園です。中央に滑り台ができる丘があり、休日や学校終わりなど子供達で賑わっています。",
+    address:"北海道札幌市中央区南17条西16丁目6",
+    main_image: File.open("./public/park_image/fushimimoiwayama.jpg"),
+    institution_ids: [5], playground_ids: [1, 2, 6, 7, 8, 9, 10]},
   { name:"幌西自転車公園",
     introduction:"園内に自転車コースが設置されており、自転車の練習ができます。",
     address:"北海道札幌市中央区南14条西18丁目3",
@@ -75,24 +75,24 @@ Park.create!([
     introduction:"札幌市のほぼ中心部に位置しながらも、緑と水が豊かな憩いの場として親しまれている総合公園です。また、園内には鴨々川が流れ、鴨などの野鳥や鯉がおります。冬は歩くスキーが楽しめ、身近に自然と触れ合うことが出来る場所として老若男女を問わず年間を通して愛されています。",
     address:"北海道札幌市中央区南14条西5丁目",
     main_image: File.open("./public/park_image/中島公園.png"),
-    institution_ids: [1, 3, 5, 7, 8], playground_ids: [1, 2, 6, 9]},
-  ])
+    institution_ids: [1, 3, 5, 7, 8], playground_ids: [1, 2, 6, 9]}
+])
 
 Category.create!([
   { name:"イベント情報" },
   { name:"周辺情報" },
   { name:"公園情報" },
-  { name:"あそぼ〜！" },
+  { name:"あそぼ〜！" }
 ])
 
 Comment.create!([
-  { content:"９月１０日に、〇〇小学校保護者有志でシャボン玉イベントを行います〜！よかったら遊びに来てくださいね。", park_id: 1, user_id: 1, category_id: 1 },
+  { content:"９月１０日に、〇〇小学校保護者有志でシャボン玉イベントを行います〜！よかったら遊びに来てくださいね。", park_id: 1, user_id: 1, category_id: 1},
   { content:"10月20日に、札幌市のイベント秋の山道散策があります。参加者受付中です。詳細はこちら", park_id: 4, user_id: 4, category_id: 1 },
-  { content:"近くに「まるっとパン」という美味しそうなパン屋さんがありました。イートインもあります。小さい子供用の椅子もありました", park_id: 2, user_id: 10, category_id: 2 },
-  { content:"公園の近くにドラックストアがあり、トイレがとてもきれいです。おむつ替え台もあります", park_id: 3, user_id: 8, category_id: 1 },
-  { content:"10月4日に、親子でヨガのイベントをやります。参加者受付中です。詳細はこちら", park_id: 5, user_id: 6, category_id: 1 },
-  { content:"明日、息子５歳と公園で氷鬼してくれるお友達を探しています〜！一緒に遊びませんか？", park_id: 1, user_id: 6, category_id: 1 },
-  ])
+  { content:"近くに「まるっとパン」という美味しそうなパン屋さんがありました。イートインもあります。小さい子供用の椅子もありました", park_id: 2, user_id: 10, category_id: 2},
+  { content:"公園の近くにドラックストアがあり、トイレがとてもきれいです。おむつ替え台もあります", park_id: 3, user_id: 8, category_id: 1},
+  { content:"10月4日に、親子でヨガのイベントをやります。参加者受付中です。詳細はこちら", park_id: 5, user_id: 6, category_id: 1},
+  { content:"明日、息子５歳と公園で氷鬼してくれるお友達を探しています〜！一緒に遊びませんか？", park_id: 1, user_id: 7, category_id: 1}
+])
 
 Post.create!([
  { content: "楽しそうなイベントですね！何か持っていくものはありますか？", comment_id: 1, user_id: 3 },
@@ -100,5 +100,5 @@ Post.create!([
  { content: "参加者は何人くらいですか？", comment_id: 2, user_id: 5 },
  { content: "情報ありがとうございます", comment_id: 2, user_id: 12 },
  { content: "参加します〜！", comment_id: 2, user_id: 8 },
- { content: "参加します〜！", comment_id: 6, user_id: 9 },
-  ])
+ { content: "参加します〜！", comment_id: 6, user_id: 9 }
+])
