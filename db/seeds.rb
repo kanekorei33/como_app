@@ -51,11 +51,11 @@ Playground.create!([
   ])
 
 Park.create!([
-  { name:"伏見もいわ山公園",
-    introduction:"2017年にできた比較的新しい公園です。中央に滑り台ができる丘があり、休日や学校終わりなど子供達で賑わっています。",
-    address:"北海道札幌市中央区南17条西16丁目6",
-    main_image: File.open("./public/park_image/fushimimoiwayama.jpg"),
-    institution_ids: [5], playground_ids: [1, 2, 6, 7, 8, 9, 10]},
+  # { name:"伏見もいわ山公園",
+  #   introduction:"2017年にできた比較的新しい公園です。中央に滑り台ができる丘があり、休日や学校終わりなど子供達で賑わっています。",
+  #   address:"北海道札幌市中央区南17条西16丁目6",
+  #   main_image: File.open("./public/park_image/fushimimoiwayama.jpg"),
+  #   institution_ids: [5], playground_ids: [1, 2, 6, 7, 8, 9, 10]},
   { name:"幌西自転車公園",
     introduction:"園内に自転車コースが設置されており、自転車の練習ができます。",
     address:"北海道札幌市中央区南14条西18丁目3",
