@@ -1,5 +1,4 @@
 RailsAdmin.config do |config|
-  config.asset_source = :webpacker
   config.parent_controller = "ApplicationController"
   #config.authenticate_with do
   #  authenticate_or_request_with_http_basic('Site Message') do |username, password|
