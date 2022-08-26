@@ -25,25 +25,28 @@
   <strong>Main image:</strong>
   <%= image_tag @park.main_image.url %>
 </p>
-
+<p>
   <strong> 施設</strong>
   <% @park.institutions.each do |institution| %>
     <td><%= institution.name %></td>
     <td><%= image_tag institution.image.url%>|</td>
   <% end %>
+</p>
+<p>
   <strong> 遊具</strong>
   <% @park.playgrounds.each do |playground| %>
     <td><%= playground.name %></td>
     <td><%= image_tag playground.image.url%>|</td>
   <% end %>
-
+</p>
 <p><strong> 口コミ投稿</strong></P>
 
 <p><strong>カテゴリ検索</strong></P>
 <%= search_form_for @q, url: search_comments_path do |f| %>
 <%= f.collection_select :category_id_eq, Category.all, :id, :name, :prompt => "検索したいカテゴリを選択してください" %>
 <br>
-<%= f.submit '検索' %>
+<%= f.hidden_field :park_id, value: @park.id %> <!--ほしい情報を'hidden_field'で入れてあげる-->
+<%= f.submit '検索'%>
 <% end %>
 
   <% @comments.each do |comment|%>
@@ -68,4 +71,4 @@
     <%= link_to 'ログインして口コミを投稿する！', new_session_path %>
   <% end %>
 
-<%= link_to 'Back', parks_path %>
+<p><%= link_to '公園一覧に戻る', parks_path %></p>

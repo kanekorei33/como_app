@@ -14,7 +14,11 @@ class CommentsController < ApplicationController
   def search
     @q = Comment.ransack(params[:q]) # 送られてきたパラメータを元にテーブルからデータを検索する
     @comments = @q.result.includes(:category) # 検索結果をActiveRecord_Relationのオブジェクトに変換
-    @park = @comments.first.park
+    unless @comments.blank?
+      @park = @comments.first.park
+    else
+      @park = Park.find(params[:q][:park_id])
+    end
     render "parks/show"
   end
 
