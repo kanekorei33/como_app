@@ -1,33 +1,33 @@
 <h1>comoのトップページです</h1>
 
 
-元気な子供たち。いろいろな公園に子供を連れて行きたい。
+<p>元気な子供たち。いろいろな公園に子供を連れて行きたい。</p>
+<br>
+<p>さて、何持ってこう？？</p>
+<p>何か面白いことやってないかな？？</p>
+<br>
+<p>遊びに行く時、気になる情報をひとまとめにしました。</p>
+<p>コミュニティに参加して情報を交換したり、気軽にゆるく集まって公園で遊びましょう！</p>
+<br>
+<p>公園をもっと楽しみたい！　という気持ちからCOMOができました</p>
 
-さて、何持ってこう？？
-何か面白いことやってないかな？？
-
-遊びに行く時、気になる情報をひとまとめにしました。
-コミュニティに参加して情報を交換したり、気軽にゆるく集まって公園で遊びましょう！
-
-公園をもっと楽しみたい！　という気持ちからCOMOができました
-
-
-How to Use
-1. top page下から公園を検索
-2. 検索結果から気になる公園をクリック
-3. 公園ページで口コミを見てみよう
-4. ログインしたらできること
-   ・コミュニティに参加できるよ
-   ・マイページができるよ
-   ・お気に入りの公園を登録できるよ
+<br>
+<p>How to Use</p>
+<p>1. top page下から公園を検索</p>
+<p>2. 検索結果から気になる公園をクリック</p>
+<p>3. 公園ページで口コミを見てみよう</p>
+<p>4. ログインしたらできること</p>
+   <p>・コミュニティに参加できるよ</p>
+   <p>・マイページができるよ</p>
+   <p>・お気に入りの公園を登録できるよ</p>
 
 
-
+<br>
 <h2> 遊具から公園を検索！ </h2>
 
 <%= search_form_for @parks_search, url: search_parks_path do |f| %>
+<p><%= f.label :institution_playground, "公園にあってほしい物をクリックして検索してね" %></p>
   <h4>施設</h4>
-  <%= f.label :institution_playground, "公園にあってほしい物をクリックして検索してね" %>
   <% Institution.all.each do |institution| %>
     <%= f.check_box :institutions_id_eq_any, { multiple: true, checked: institution[:checked], disabled: institution[:disabled], include_hidden: false }, institution[:id] %>
     <label><%= institution.name %></label>

@@ -20,6 +20,7 @@ User.create!([
   { name:"山田", nickname:"山田先生〜", email:"test_12@example.com", password: "123456" },
   { name:"吉田", nickname:"吉田くん", email:"test_13@example.com", password: "123456" },
   { name:"ゲストユーザー", nickname:"ゲストさん", email:"test@example.com", password: "123456" },
+  { name:"ゲストアドミンユーザー", nickname:"ゲストアドミンさん", email:"test_admin@example.com", password:"123456", admin: true}
   ])
 
 Institution.create!([

@@ -21,7 +21,7 @@
     <% end %>
       <%= link_to "管理者ページ", rails_admin_path %>
       <%= link_to 'ゲストユーザー', guest_path, method: :post, class: 'btn btn-success' %>
-
+      <%= link_to 'ゲストユーザー(管理者)', guest_admin_path, method: :post %>
     <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>

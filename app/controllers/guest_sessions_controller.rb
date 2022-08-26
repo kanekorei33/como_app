@@ -11,4 +11,11 @@ class GuestSessionsController < ApplicationController
     flash[:warning] = 'よろしくお願いします！'
     redirect_to session[:previous_url]
   end
+
+  def create_admin
+    user = User.find_by(email: 'test_admin@example.com')
+    log_in(user)
+    flash[:success] = 'ゲストユーザー(管理者)でログインしました'
+    redirect_to session[:previous_url]
+  end
 end

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root "parks#top"
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   post '/guest', to: 'guest_sessions#create'
+  post '/guest_admin', to: 'guest_sessions#create_admin'
 
   resources :categories
   resources :playgrounds
