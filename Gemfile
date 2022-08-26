@@ -16,6 +16,8 @@ gem 'rails_admin', '~> 3.0'
 gem 'ransack'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'net-smtp'
+gem 'net-imap'
+gem 'net-pop'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

@@ -156,6 +156,14 @@ GEM
     minitest (5.16.2)
     msgpack (1.5.4)
     nested_form (0.3.2)
+    net-imap (0.1.1)
+      digest
+      net-protocol
+      strscan
+    net-pop (0.1.1)
+      digest
+      net-protocol
+      timeout
     net-protocol (0.1.1)
       io-wait
       timeout
@@ -274,6 +282,7 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     ssrf_filter (1.0.8)
+    strscan (3.0.1)
     thor (1.2.1)
     tilt (2.0.11)
     timeout (0.1.1)
@@ -327,6 +336,8 @@ DEPENDENCIES
   launchy
   listen (~> 3.3)
   mini_magick
+  net-imap
+  net-pop
   net-smtp
   pg (~> 1.1)
   pry-rails
