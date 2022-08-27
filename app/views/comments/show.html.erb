@@ -11,4 +11,6 @@
   </div>
   <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
     <%= render partial: 'posts/form', locals: { post: @post, comment: @comment, park: @park } %>
+
+    <%= link_to '戻る', park_path(@park.id) %>
   </div>

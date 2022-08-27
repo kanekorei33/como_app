@@ -1,8 +1,5 @@
 require 'rails_helper'
 
-# お気に入り公園が確認できる
-# お気に入り公園のリンクを押すとお気に入りの公園ページへ遷移する
-
 RSpec.describe 'ユーザー機能テスト', type: :system do
 let!(:park) { FactoryBot.create(:park)}
 
@@ -58,6 +55,20 @@ let!(:park) { FactoryBot.create(:park)}
       click_button 'commit'
       expect(page).to have_content 'テストさん'
       expect(page).to have_content '編集しました'
+    end
+  end
+  context 'ユーザーページのお気に入り確認テスト' do
+    it 'お気に入りの公園リンクを押すとページにいける' do
+    FactoryBot.create(:user)
+      visit new_session_path
+      fill_in 'session[email]', with: 'test@gmail.com'
+      fill_in 'session[password]', with: '123456'
+      click_button 'commit'
+      visit park_path(1)
+      click_link 'お気に入りする'
+      click_link 'マイページ'
+      click_link 'この公園ページへ行く'
+      expect(page).to have_content 'テスト公園'
     end
   end
 end

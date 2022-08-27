@@ -4,7 +4,12 @@ FactoryBot.define do
     user { FactoryBot.create(:user) }
   end
 
-  factory :comment_posts, class: Comment do
+  factory :second_comment, class: Comment do
+    content { 'コメントテストだよだよ' }
+    user { FactoryBot.create(:user) }
+  end
+  
+  factory :third_comment, class: Comment do
     content { 'コメントテストだよだよ' }
     user { FactoryBot.create(:user) }
   end
