@@ -24,6 +24,9 @@ class CommentsController < ApplicationController
 
   # GET /comments/1 or /comments/1.json
   def show
+    unless logged_in?
+      redirect_to new_session_path, notece: "ログインしてください"
+    end
     @posts = @comment.posts
     @post = @comment.posts.build
     @park = @comment.park

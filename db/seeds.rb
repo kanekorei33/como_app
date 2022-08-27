@@ -35,19 +35,19 @@ Institution.create!([
   ])
 
 Playground.create!([
-  { name:"ブランコ", image: File.open("./public/playgraund_images/ブランコ.jpg")},
-  { name:"すべり台", image: File.open("./public/playgraund_images/すべり台.jpg")},
-  { name:"砂場", image: File.open("./public/playgraund_images/砂場.jpg")},
-  { name:"うんてい", image: File.open("./public/playgraund_images/うんてい.jpg")},
-  { name:"のぼり棒", image: File.open("./public/playgraund_images/のぼり棒.jpg")},
-  { name:"シーソー", image: File.open("./public/playgraund_images/シーソー.jpg")},
-  { name:"ジャングルジム", image: File.open("./public/playgraund_images/ジャングルジム.jpg")},
-  { name:"ターザンロープ", image: File.open("./public/playgraund_images/ターザンロープ.jpg")},
-  { name:"コンビネーション遊具", image: File.open("./public/playgraund_images/コンビネーション.jpg")},
-  { name:"ボルダリング", image: File.open("./public/playgraund_images/ボルダリング.jpg")},
-  { name:"バケット型ブランコ", image: File.open("./public/playgraund_images/バケット型ブランコ.jpg")},
-  { name:"鉄棒", image: File.open("./public/playgraund_images/鉄棒.jpg")},
-  { name:"スプリング遊具", image: File.open("./public/playgraund_images/スプリング遊具.jpg")}
+  { name:"ブランコ", image: File.open("./public/playground_images/ブランコ.jpg")},
+  { name:"すべり台", image: File.open("./public/playground_images/すべり台.jpg")},
+  { name:"砂場", image: File.open("./public/playground_images/砂場.jpg")},
+  { name:"うんてい", image: File.open("./public/playground_images/うんてい.jpg")},
+  { name:"のぼり棒", image: File.open("./public/playground_images/のぼり棒.jpg")},
+  { name:"シーソー", image: File.open("./public/playground_images/シーソー.jpg")},
+  { name:"ジャングルジム", image: File.open("./public/playground_images/ジャングルジム.jpg")},
+  { name:"ターザンロープ", image: File.open("./public/playground_images/ターザンロープ.jpg")},
+  { name:"コンビネーション遊具", image: File.open("./public/playground_images/コンビネーション.jpg")},
+  { name:"ボルダリング", image: File.open("./public/playground_images/ボルダリング.jpg")},
+  { name:"バケット型ブランコ", image: File.open("./public/playground_images/バケット型ブランコ.jpg")},
+  { name:"鉄棒", image: File.open("./public/playground_images/鉄棒.jpg")},
+  { name:"スプリング遊具", image: File.open("./public/playground_images/スプリング遊具.jpg")}
   ])
 
 Park.create!([
