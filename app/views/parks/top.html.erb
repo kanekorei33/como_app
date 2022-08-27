@@ -37,7 +37,7 @@
     <%= f.check_box :playgrounds_id_eq_any, { multiple: true, checked: playground[:checked], disabled: playground[:disabled], include_hidden: false }, playground[:id] %>
     <label><%= playground.name %></label>
   <% end %>
-  <p><%= f.submit "検索" %></P>
+  <p><%= f.submit "検索", class: "search_btn" %></P>
 <% end %>
 
 <h2> 住所・名前から公園を検索！ </h2>
@@ -45,5 +45,5 @@
   <%= f.label :name_or_address_cont, "公園名・住所のキーワードを入力して検索してね" %>
   <%= f.search_field :name_or_address_cont %>
 
-  <%= f.submit "検索" %>
+  <%= f.submit "検索", class: "search_last_btn" %>
 <% end %>

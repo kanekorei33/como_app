@@ -5,7 +5,7 @@ let!(:park) { FactoryBot.create(:park)}
 
   context 'ユーザー新規登録' do
     it '公園の口コミページから新規登録したら、元いたページへ遷移する' do
-      visit park_path(1)
+      visit park_path(park.id)
       click_link 'ログインして口コミを投稿する'
       click_link '新規登録'
       fill_in 'user[name]', with: 'システムテスト'
@@ -17,10 +17,11 @@ let!(:park) { FactoryBot.create(:park)}
       expect(page).to have_content 'お気に入り'
     end
   end
+
   context 'ログインフォーム入力' do
     it 'ログイン完了' do
       FactoryBot.create(:user)
-      visit park_path(1)
+      visit park_path(park.id)
       click_link 'ログインして口コミを投稿する'
       fill_in 'session[email]', with: 'test@gmail.com'
       fill_in 'session[password]', with: '123456'
@@ -28,6 +29,7 @@ let!(:park) { FactoryBot.create(:park)}
       expect(page).to have_content 'お気に入り'
     end
   end
+
   context 'ログアウトテスト' do
     it 'ログアウト' do
       FactoryBot.create(:user)
@@ -39,6 +41,7 @@ let!(:park) { FactoryBot.create(:park)}
       expect(page).to have_content 'ログアウトしました'
     end
   end
+
   context 'ユーザー情報を編集' do
     it '編集内容が反映される' do
       FactoryBot.create(:user)
@@ -57,6 +60,7 @@ let!(:park) { FactoryBot.create(:park)}
       expect(page).to have_content '編集しました'
     end
   end
+
   context 'ユーザーページのお気に入り確認テスト' do
     it 'お気に入りの公園リンクを押すとページにいける' do
     FactoryBot.create(:user)

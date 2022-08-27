@@ -13,12 +13,6 @@
     <%= form.text_area :content, id: "post_content_#{comment.id}" %>
     <%= form.label :content %>
   </div>
-    <%= form.text_area :image, id: "post_content_#{comment.id}" %>
-    <%= form.label :image %>
-    <%= image_tag(post.image.url) if post.image && post.image.url %>
-    <%= form.file_field :image %>
-    <%= form.hidden_field :image_cache %>
-
   <div class="actions">
     <%= form.submit %>
   </div>
