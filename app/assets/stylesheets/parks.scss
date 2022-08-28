@@ -1,0 +1,49 @@
+/*top--------------------------*/
+
+.top-content {
+  text-align: center;
+  margin-top:0;
+}
+
+.top-content p {
+  font-size: 1rem;
+  font-weight: bold;
+  text-shadow: 5px 3px 3px white, -1em 0 .4em white;
+  margin: 0;
+}
+
+.how-to p {
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+}
+/* box-shadowをぼかしつきで指定 */
+// p.box-shadow {
+//   font-size: xx-large;
+//   font-weight: bold;
+//   text-shadow: -1px -1px 0 white, -1px 0 0 white, -1px 1px 0 white,
+//   0 -1px 0 white,                  0 1px 0 white
+// 1px -1px 0 white,  1px 0 0 white,  1px 1px 0 white;
+// }
+
+#top {
+  background-image: url(/images/park_top.jpg);
+  min-width: 100vh;
+}
+
+#top .page-title {
+  text-transform: none;
+}
+
+.big-bg {
+  background-position: center top;
+  background-size: cover;
+}
+
+.clear{
+  background-color: rgba(255, 255, 255, 0.26);
+}
+
+.search_field {
+  
+}

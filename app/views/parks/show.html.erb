@@ -1,4 +1,4 @@
-
+<div class="container ">
 <% if logged_in? %>
   <% if @favorite.present? %>
     <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
@@ -72,3 +72,4 @@
   <% end %>
 
 <p><%= link_to '公園一覧に戻る', parks_path %></p>
+</div>

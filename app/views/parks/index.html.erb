@@ -18,7 +18,7 @@
         <td><%= park.name %></td>
         <td><%= park.address %></td>
 
-        <td><%= link_to 'Show', park %></td>
+        <td><%= link_to '見にいく！', park %></td>
         <% if logged_in? %>
           <% if current_user.admin? %>
             <td><%= link_to 'Edit', edit_park_path(park) %></td>
