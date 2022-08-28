@@ -5,10 +5,6 @@ class CommentsController < ApplicationController
   def index
     @comments = Comment.all
     @q = Comment.ransack(params[:q])
-    # @category = Category.all
-    # @q = Comment.ransack(params[:q])
-    # @comments = @q.result #railsで使える形式に変換
-    # @comments = Comments.where(Categiry.where(category_id: params[:q][:icategory_id])) if params[:q].present? && params[:q][:name].present?
   end
 
   def search
@@ -59,9 +55,11 @@ class CommentsController < ApplicationController
   end
   # PATCH/PUT /comments/1 or /comments/1.json
   def update
+
     respond_to do |format|
+      #binding.pry
       if @comment.update(comment_params)
-        format.html { redirect_to park_path(params[:id]), notice: "Comment was successfully updated." }
+        format.html { redirect_to comment_path(params[:id]), notice: "Comment was successfully updated." }
         format.json { render :show, status: :ok, location: @comment }
       else
         format.html { render :edit, status: :unprocessable_entity }
