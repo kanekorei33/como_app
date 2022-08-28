@@ -9,6 +9,7 @@ Bundler.require(*Rails.groups)
 module ComoApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
     config.load_defaults 6.1
     config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local

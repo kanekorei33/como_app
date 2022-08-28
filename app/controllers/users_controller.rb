@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   skip_before_action :store_location
-  #skip_before_action :login_required, only: %i[new show create]
   before_action :set_user, only: %i[show edit update]
   action :admin_user
 
@@ -21,13 +20,10 @@ class UsersController < ApplicationController
   end
 
   def show
-  #  binding.irb
-  #redirect_to parks_path unless params[:id] == current_user.id.to_s
-  @user = User.find(params[:id])
-  #@parks = @user.parks
-  favorites = Favorite.where(user_id: current_user.id).pluck(:park_id)
-  @favorite_list = Park.find(favorites)
-  @comments = @user.comments
+    @user = User.find(params[:id])
+    favorites = Favorite.where(user_id: current_user.id).pluck(:park_id)
+    @favorite_list = Park.find(favorites)
+    @comments = @user.comments
   end
 
   def edit

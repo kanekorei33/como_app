@@ -5,21 +5,24 @@ class CommentsController < ApplicationController
   def index
     @comments = Comment.all
     @q = Comment.ransack(params[:q])
-    # @category = Category.all
-    # @q = Comment.ransack(params[:q])
-    # @comments = @q.result #railsで使える形式に変換
-    # @comments = Comments.where(Categiry.where(category_id: params[:q][:icategory_id])) if params[:q].present? && params[:q][:name].present?
   end
 
   def search
     @q = Comment.ransack(params[:q]) # 送られてきたパラメータを元にテーブルからデータを検索する
     @comments = @q.result.includes(:category) # 検索結果をActiveRecord_Relationのオブジェクトに変換
-    @park = @comments.first.park
+    unless @comments.blank?
+      @park = @comments.first.park
+    else
+      @park = Park.find(params[:q][:park_id])
+    end
     render "parks/show"
   end
 
   # GET /comments/1 or /comments/1.json
   def show
+    unless logged_in?
+      redirect_to new_session_path, notece: "ログインしてください"
+    end
     @posts = @comment.posts
     @post = @comment.posts.build
     @park = @comment.park
@@ -52,9 +55,11 @@ class CommentsController < ApplicationController
   end
   # PATCH/PUT /comments/1 or /comments/1.json
   def update
+
     respond_to do |format|
+      #binding.pry
       if @comment.update(comment_params)
-        format.html { redirect_to park_path(params[:id]), notice: "Comment was successfully updated." }
+        format.html { redirect_to comment_path(params[:id]), notice: "Comment was successfully updated." }
         format.json { render :show, status: :ok, location: @comment }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -68,7 +73,7 @@ class CommentsController < ApplicationController
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: "Comment was successfully destroyed." }
+      format.html { redirect_to park_path(params[:id]), notice: "Comment was successfully destroyed." }
       format.json { head :no_content }
     end
   end

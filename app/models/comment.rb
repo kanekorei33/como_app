@@ -3,5 +3,6 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :park
   belongs_to :category
+  validates :content, presence: true
   mount_uploader :image, ImageUploader
 end

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.4'
+#ruby '3.0.4'
 
 gem 'rails', '~> 6.1.6'
 gem 'pg', '~> 1.1'
@@ -15,6 +15,11 @@ gem 'rexml'
 gem 'rails_admin', '~> 3.0'
 gem 'ransack'
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'net-smtp'
+gem 'net-imap'
+gem 'net-pop'
+gem 'carrierwave'
+gem 'mini_magick'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -27,8 +32,6 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'launchy'
-  gem 'carrierwave'
-  gem 'mini_magick'
   gem 'dotenv-rails'
 end
 

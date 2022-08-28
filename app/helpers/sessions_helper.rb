@@ -11,4 +11,8 @@ module SessionsHelper
     redirect_to(session[:return_to] || default)
     session.delete(:return_to)
   end
+
+  #def admin_user
+  #  @admin_user = admin: true
+  #end
 end
