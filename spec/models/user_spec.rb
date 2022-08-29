@@ -24,7 +24,7 @@ RSpec.describe 'userモデル機能', type: :model do
 
   context '新規登録のemailがない時' do
     it "バリデーションが通らない" do
-      user = FactoryBot.build(:user, email: nil)#一部情報を書き換える
+      user = FactoryBot.build(:user, email: "")#一部情報を書き換える
       user.valid?
       expect(user).not_to be_valid
     end
@@ -54,7 +54,8 @@ RSpec.describe 'userモデル機能', type: :model do
         password: "123456",
         password_confirmation: "123456"
       )
-      expect(user).to eq 'メールアドレスはすでに存在します'
+      user.valid?
+      expect(user.valid?).to eq false
     end
   end
 
@@ -63,7 +64,7 @@ RSpec.describe 'userモデル機能', type: :model do
       user = User.new(
         name: "test",
         nickname: "testさん",
-        email: "testexample.com",
+        email: "test@example.com",
         password: "123456",
         password_confirmation: "123456"
       )

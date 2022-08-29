@@ -17,14 +17,6 @@
   font-weight: bold;
   color: white;
 }
-/* box-shadowをぼかしつきで指定 */
-// p.box-shadow {
-//   font-size: xx-large;
-//   font-weight: bold;
-//   text-shadow: -1px -1px 0 white, -1px 0 0 white, -1px 1px 0 white,
-//   0 -1px 0 white,                  0 1px 0 white
-// 1px -1px 0 white,  1px 0 0 white,  1px 1px 0 white;
-// }
 
 #top {
   background-image: url(/images/park_top.jpg);
@@ -40,8 +32,8 @@
   background-size: cover;
 }
 
-.clear{
-  background-color: rgba(255, 255, 255, 0.26);
+.bg-rgba{
+  background-color: rgba rgba(58, 56, 192, 0.26);
 }
 
 .search_field {

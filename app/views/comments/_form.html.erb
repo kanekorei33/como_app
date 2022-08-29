@@ -1,7 +1,7 @@
 <div class="container ">
 
 <h1> 口コミ投稿</h1>
-<%= form_with(model: [:park,comment]) do |form| %>
+<%= form_with(model: [@park, @comment]) do |form| %>
   <% if comment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
@@ -27,6 +27,7 @@
     <%= form.hidden_field :image_cache %>
   </div>
 
+  <%#= form.hidden_field :park_id, value: @park.id %>
 
   <div class="actions">
     <%= form.submit %>
