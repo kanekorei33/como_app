@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:success] = "ユーザー登録しました"
-      redirect_to session[:previous_url]
+      new_user_redirect_back_or user_path(@user)
     else
       flash.now[:danger] = "ユーザー登録に失敗しました"
       render :new
@@ -50,6 +50,11 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :nickname, :email, :password, :password_confirmation, :image, :image_cache)
+  end
+
+  def new_user_redirect_back_or(default)
+    redirect_to(session[:previous_url] || default)
+    session.delete(:previous_url)
   end
 
   def currect_user
