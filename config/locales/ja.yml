@@ -6,6 +6,7 @@ ja:
         title: 'COMO_APP 管理画面'
         breadcrumb: 'ダッシュボード'
         menu: 'メニュー'
+        home: 'ホーム'
   activerecord:
     models:
       user: 'ユーザー'

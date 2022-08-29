@@ -42,7 +42,9 @@ class ParksController < ApplicationController
   # GET /parks/1/edit
   def edit
     if current_user != @user
+      unless current_user.admin?
       redirect_to parks_path
+      end
     end
   end
 
@@ -50,7 +52,9 @@ class ParksController < ApplicationController
   def create
     @park = Park.new(park_params) if logged_in?
       if current_user != @user
+        unless current_user.admin?
         redirect_to parks_path
+        end
       end
     respond_to do |format|
       if @park.save

@@ -26,8 +26,11 @@
           <li class="nav-item col-lg-auto"><%= link_to 'ゲストユーザー(管理者)', guest_admin_path, method: :post, class:"nav-link py-3 fs-7" %></li>
         <% end %>
           <li class="nav-item col-lg-auto"><%= link_to "公園一覧", parks_path, class:"nav-link py-3 fs-7" %></li>
-          
-          <li class="nav-item col-lg-auto"><%= link_to "管理者ページ", rails_admin_path, class:"nav-link py-3 fs-7" %></li>
+        <% if logged_in? %>
+          <% if current_user.admin? %>
+            <li class="nav-item col-lg-auto"><%= link_to "管理者ページ", rails_admin_path, class:"nav-link py-3 fs-7" %></li>
+          <% end %>
+        <% end %>
         </ul>
       </nav>
     </header>
