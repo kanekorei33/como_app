@@ -2,8 +2,7 @@
 <div class="row">
 <div class="col-sm-6">
 <p>
-  <strong>公園名:</strong>
-  <%= @park.name %>
+  <h3>公園名 : <%= @park.name %></h3>
 </p>
 
 <p>
@@ -32,30 +31,36 @@
 <p>
   <p><strong> 施設</strong></p>
   <% @park.institutions.each do |institution| %>
-    <td><%= image_tag institution.image.url %>|</td>
+    <td><%= image_tag institution.image.url, class:"border border-dark"%></td>
   <% end %>
 </p>
 
 <p>
   <p><strong> 遊具</strong></p>
   <% @park.playgrounds.each do |playground| %>
-    <td><%= image_tag playground.image.url%>|</td>
+    <td><%= image_tag playground.image.url, class:"border border-dark" %></td>
   <% end %>
 </p>
 </div>
 </div>
-
+<hr>
 <div class="container">
+<br>
+<p><h4> 口コミ投稿</h4></P>
+<P>気になるカテゴリーで投稿内容を検索できます<br>
 
-
-<p><strong> 口コミ投稿</strong></P>
-
-<p><strong>カテゴリ検索</strong></P>
+<% if logged_in? %>
+    <%= link_to '口コミを投稿！', new_park_comment_path(@park) %>
+  <% else%>
+    <%= link_to 'ログインして口コミを投稿する！', new_session_path %>
+  <% end %>☜ こちらから口コミ投稿してくださいね！</p>
+  <p>気になる口コミには質問できます。「この口コミにコメントする」からどうぞ</P>
+<br>
+カテゴリ検索:
 <%= search_form_for @q, url: search_comments_path do |f| %>
 <%= f.collection_select :category_id_eq, Category.all, :id, :name, :prompt => "検索したいカテゴリを選択してください" %>
-<br>
 <%= f.hidden_field :park_id, value: @park.id %> <!--ほしい情報を'hidden_field'で入れてあげる-->
-<%= f.submit '検索'%>
+<%= f.submit '検索'%></P>
 <% end %>
 
   <% @comments.each do |comment|%>
@@ -75,13 +80,12 @@
     <% end %>
     </div>
   <% end %>
-
-  <% if logged_in? %>
+<br>
+<% if logged_in? %>
     <%= link_to '口コミを投稿！', new_park_comment_path(@park) %>
   <% else%>
     <%= link_to 'ログインして口コミを投稿する！', new_session_path %>
   <% end %>
-
 <p><%= link_to '公園一覧に戻る', parks_path %></p>
 </div>
 </div>
