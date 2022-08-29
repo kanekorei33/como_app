@@ -32,21 +32,22 @@
 <p>
   <p><strong> 施設</strong></p>
   <% @park.institutions.each do |institution| %>
-    <td><%= institution.name %></td>
-    <td><%= image_tag institution.image.url%>|</td>
+    <td><%= image_tag institution.image.url %>|</td>
   <% end %>
 </p>
 
 <p>
   <p><strong> 遊具</strong></p>
   <% @park.playgrounds.each do |playground| %>
-    <td><%= playground.name %></td>
     <td><%= image_tag playground.image.url%>|</td>
   <% end %>
 </p>
+</div>
+</div>
 
-</div>
-</div>
+<div class="container">
+
+
 <p><strong> 口コミ投稿</strong></P>
 
 <p><strong>カテゴリ検索</strong></P>
@@ -58,8 +59,9 @@
 <% end %>
 
   <% @comments.each do |comment|%>
-    <p><%= comment.user.nickname %>
-    <p><%= comment.category.name %></p>
+  <div class="card w-75 p">
+    <p>投稿者：<%= comment.user.nickname %>
+    <p>カテゴリー:<%= comment.category.name %></p>
     <p><%= comment.content%></p>
     <%= image_tag comment.image.url, class:'comment_image' if comment.image.present?%>
     <% if logged_in? %>
@@ -71,6 +73,7 @@
     <% else%>
       <%= link_to 'ログインしてこの口コミにコメントする', new_session_path %>
     <% end %>
+    </div>
   <% end %>
 
   <% if logged_in? %>
@@ -80,4 +83,6 @@
   <% end %>
 
 <p><%= link_to '公園一覧に戻る', parks_path %></p>
+</div>
+</div>
 </div>

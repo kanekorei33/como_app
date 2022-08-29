@@ -1,14 +1,16 @@
 <ul class="delete-marker-fix">
   <% posts&.each do |post| %>
+  <div class="card w-75 p">
     <% if post.id.present? %>
       <li>
         <div class="post-content" id ="this_post_<%= post.id %>"></div>
-          <p><%= post.user.nickname %></p>
+          <p>コメント投稿者：<%= post.user.nickname %></p>
           <p><%= post.content %></p>
           <% if post.user_id == current_user.id %>
-            <p><%= link_to "コメント編集", edit_park_comment_post_path( @post.comment.park, comment, post), remote: true %></p>
-            <p><%= link_to "コメント削除", park_comment_post_path( @post.comment.park, post.comment_id, post.id), method: :delete, remote: true,data: { confirm: "本当に削除しますか?"} %></p>
+            <%= link_to "コメント編集", edit_park_comment_post_path( @post.comment.park, comment, post), remote: true %>|
+            <%= link_to "コメント削除", park_comment_post_path( @post.comment.park, post.comment_id, post.id), method: :delete, remote: true,data: { confirm: "本当に削除しますか?"} %></p>
           <% end %>
+        </div>
       </li>
     <% end %>
   <% end %>

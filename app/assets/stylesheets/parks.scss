@@ -39,3 +39,12 @@
 .comment_image {
   width: 200px;
 }
+
+.img-shadow {
+  box-shadow: 0 0 3px 1px rgba(0,0,0,0.1) inset;
+}
+.img-shadow img {
+  position: relative;
+  width: 50px;
+  z-index: -1;
+}
