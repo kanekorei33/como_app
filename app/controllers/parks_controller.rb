@@ -41,15 +41,20 @@ class ParksController < ApplicationController
 
   # GET /parks/1/edit
   def edit
+    if current_user != @user
+      redirect_to parks_path
+    end
   end
 
   # POST /parks or /parks.json
   def create
     @park = Park.new(park_params) if logged_in?
-
+      if current_user != @user
+        redirect_to parks_path
+      end
     respond_to do |format|
       if @park.save
-        format.html { redirect_to park_url(@park), notice: "Park was successfully created." }
+        format.html { redirect_to park_url(@park), notice: "Park が登録されました" }
         format.json { render :show, status: :created, location: @park }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -62,7 +67,7 @@ class ParksController < ApplicationController
   def update
     respond_to do |format|
       if @park.update(park_params)
-        format.html { redirect_to park_url(@park), notice: "Park was successfully updated." }
+        format.html { redirect_to park_url(@park), notice: "Park は編集されました" }
         format.json { render :show, status: :ok, location: @park }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -76,7 +81,7 @@ class ParksController < ApplicationController
     @park.destroy
 
     respond_to do |format|
-      format.html { redirect_to parks_url, notice: "Park was successfully destroyed." }
+      format.html { redirect_to parks_url, notice: "Park は消去されました" }
       format.json { head :no_content }
     end
   end
