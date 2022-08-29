@@ -22,7 +22,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = @comment.posts.build(post_params)
+    @post = Post.find(params[:id])
     @post.user_id = current_user.id
     respond_to do |format|
       if @post.update(post_params)

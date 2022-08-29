@@ -1,31 +1,33 @@
-<h1>新規登録</h1>
+<div class="container ">
+  <h1>新規登録</h1>
 
-<% if @user.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
-    <ul>
-    <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %>  <%= @user.name %> さんの情報は保存出来ませんでした:</h2>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= form_with(model: @user, local: true) do |f| %>
-<p><%= f.label :name %></p>
-<p><%= f.text_field :name %></p>
+  <%= form_with(model: @user, local: true) do |f| %>
+  <p><%= f.label :name %></p>
+  <p><%= f.text_field :name, placeholder:"例）公園　太郎" %></p>
 
-<p><%= f.label :nickname%></p>
-<p><%= f.text_field :nickname %></p>
+  <p><%= f.label :nickname%></p>
+  <p><%= f.text_field :nickname, placeholder:"例）こうえんさん"  %></p>
 
-<p><%= f.label :email %></p>
-<p><%= f.email_field :email %></p>
+  <p><%= f.label :email %></p>
+  <p><%= f.email_field :email, placeholder:"例）example@example.com"  %></p>
 
-<p><%= f.label :password %></p>
-<p><%= f.password_field :password %></p>
+  <p><%= f.label :password %></p>
+  <p><%= f.password_field :password, placeholder:"例）6文字までの英数字" %></p>
 
-<p><%= f.label :password_confirmation %></p>
-<p><%= f.password_field :password_confirmation %></p>
+  <p><%= f.label :password_confirmation %></p>
+  <p><%= f.password_field :password_confirmation, placeholder:"設定したパスワードをもう一度入れてください" %></p>
 
-<p><%= f.submit "Create my account" %></p>
-<% end %>
+  <p><%= f.submit "Create my account",class: "btn btn-gblue" %></p>
+  <% end %>
+</div>

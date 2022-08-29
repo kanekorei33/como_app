@@ -1,4 +1,5 @@
-<h1>Profile editing</h1>
+<div class="container">
+  <h1>Profile editing</h1>
 
   <%= form_with(model: @user, local: true) do |f| %>
     <%= f.label :name %><p>
@@ -16,6 +17,6 @@
     <%= f.file_field :image %><p>
     <%= f.hidden_field :image_cache %><p>
 
-
-    <%= f.submit "Edit my account" %>
+    <%= f.submit "Edit my account", class: "btn btn-gblue"%>
   <% end %>
+</div>

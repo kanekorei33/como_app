@@ -25,7 +25,7 @@ class PlaygroundsController < ApplicationController
 
     respond_to do |format|
       if @playground.save
-        format.html { redirect_to playground_url(@playground), notice: "Playground was successfully created." }
+        format.html { redirect_to playground_url(@playground), notice: "Playground が登録されました" }
         format.json { render :show, status: :created, location: @playground }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class PlaygroundsController < ApplicationController
   def update
     respond_to do |format|
       if @playground.update(playground_params)
-        format.html { redirect_to playground_url(@playground), notice: "Playground was successfully updated." }
+        format.html { redirect_to playground_url(@playground), notice: "Playground が編集されました" }
         format.json { render :show, status: :ok, location: @playground }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class PlaygroundsController < ApplicationController
     @playground.destroy
 
     respond_to do |format|
-      format.html { redirect_to playgrounds_url, notice: "Playground was successfully destroyed." }
+      format.html { redirect_to playgrounds_url, notice: "Playground が消去されました" }
       format.json { head :no_content }
     end
   end

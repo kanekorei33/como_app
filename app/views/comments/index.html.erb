@@ -14,11 +14,9 @@
   <tbody>
     <% @comments.each do |comment| %>
       <tr>
-        <% comment.categories.each do |category|%>
-          <td><%= category.name %></td>
-        <% end %>
+        <td><%= comment.category.name %></td>
         <td><%= comment.content %></td>
-        <td><%= image_tag comment.image %></td>
+        <td><%= image_tag comment.image if comment.image.present? %></td>
         <td><%= link_to 'Show', comment %></td>
         <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
         <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>

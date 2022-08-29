@@ -4,8 +4,10 @@
 
   <!-- このcomments_areaというHTMLのidを取得して、そのdivの部分だけを更新する -->
   <div id="posts_area">
-    <p><%= @comment.user.nickname %></p>
+    <div class="card w-75 p">
+    <p>投稿者：<%= @comment.user.nickname %></p>
     <p><%= @comment.content %></p>
+    </div>
     <!-- 投稿されたコメント一覧をparkの詳細ページに表示するためのrender -->
     <%= render partial: 'posts/index', locals: { posts: @posts, comment: @comment } %>
   </div>

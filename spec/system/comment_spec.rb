@@ -54,7 +54,7 @@ RSpec.describe 'comment投稿機能', type: :system do
         page.accept_confirm do
           click_link '消去'
         end
-        expect(page).to have_content '消去しました'
+        expect(page).to have_content '口コミ削除しました'
       end
     end
   end

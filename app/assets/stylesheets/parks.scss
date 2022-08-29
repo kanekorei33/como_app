@@ -1,0 +1,50 @@
+/*top--------------------------*/
+
+.top-content {
+  text-align: center;
+  margin-top:0;
+}
+
+.top-content p {
+  font-size: 1rem;
+  font-weight: bold;
+  text-shadow: 5px 3px 3px white, -1em 0 .4em white;
+  margin: 0;
+}
+
+.how-to p {
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+}
+
+#top {
+  background-image: url(/images/park_top.jpg);
+  min-width: 100vh;
+}
+
+#top .page-title {
+  text-transform: none;
+}
+
+.big-bg {
+  background-position: center top;
+  background-size: cover;
+}
+
+.bg-rgba{
+  background-color: rgba rgba(58, 56, 192, 0.26);
+}
+
+.comment_image {
+  width: 200px;
+}
+
+.img-shadow {
+  box-shadow: 0 0 3px 1px rgba(0,0,0,0.1) inset;
+}
+.img-shadow img {
+  position: relative;
+  width: 50px;
+  z-index: -1;
+}

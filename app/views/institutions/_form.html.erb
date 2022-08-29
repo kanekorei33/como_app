@@ -1,7 +1,7 @@
 <%= form_with(model: institution) do |form| %>
   <% if institution.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(institution.errors.count, "error") %> prohibited this institution from being saved:</h2>
+      <h2><%= pluralize(institution.errors.count, "error") %>  institution が保存できませんでした:</h2>
 
       <ul>
         <% institution.errors.each do |error| %>

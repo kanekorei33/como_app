@@ -1,6 +1,39 @@
 ---
 ja:
+  admin:
+    actions:
+      dashboard:
+        title: 'COMO_APP 管理画面'
+        breadcrumb: 'ダッシュボード'
+        menu: 'メニュー'
+        home: 'ホーム'
   activerecord:
+    models:
+      user: 'ユーザー'
+      park: '公園'
+      comment: '口コミコメント'
+      favorite: 'いいね'
+      category: 'カテゴリー'
+      institution: '施設'
+      playground: '遊具'
+      post: 'コメント返信'
+      park_playground: '遊具中間テーブル'
+      park_institution: '施設中間テーブル'
+    attributes:
+      # 各モデルのカラム名を記載
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+      post:
+        content: 説明
+        image: 画像
+      comment:
+        comment: コメント内容
+      contact:
+        name: 名前
+        email: メールアドレス
+        content: お問い合わせ内容
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -17,7 +50,7 @@ ja:
     - 金
     - 土
     abbr_month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月

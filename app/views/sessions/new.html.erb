@@ -1,3 +1,5 @@
+<div class="container ">
+
 <h1>COMO</h1>
 
 <p id="notice"><%= notice %></p>
@@ -7,10 +9,11 @@
 <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
 
 <p><%= f.label :email %></p>
-<p><%= f.email_field :email %></p>
+<p><%= f.email_field :email, placeholder:"登録したemailをご記入ください" %></p>
 
 <p><%= f.label :password %></p>
- <p><%= f.password_field :password %></p>
+<p><%= f.password_field :password, placeholder:"登録したパスワードをご記入ください" %></p>
 
-<p><%= f.submit "Log in" %></p>
+<p><%= f.submit "Log in",class: "btn btn-gblue" %></p>
 <% end %>
+</div>
