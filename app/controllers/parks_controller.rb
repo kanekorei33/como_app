@@ -36,6 +36,14 @@ class ParksController < ApplicationController
 
   # GET /parks/new
   def new
+    unless logged_in?
+      redirect_to parks_path and return
+    end
+    if current_user != @user
+      unless current_user.admin?
+        redirect_to parks_path
+      end
+    end
     @park = Park.new
   end
 
