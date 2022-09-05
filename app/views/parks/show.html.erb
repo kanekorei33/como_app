@@ -1,88 +1,85 @@
 <div class="container">
-<div class="row">
-<div class="col-sm-6">
-<p>
-  <strong>公園名:</strong>
-  <%= @park.name %>
-</p>
+  <div class="row">
+    <div class="col-sm-6">
+    <p>
+      <h3>公園名 : <%= @park.name %></h3>
+    </p>
 
-<p>
-  <%= image_tag @park.main_image.url %>
-</p>
+    <p>
+      <%= image_tag @park.main_image.url, class:'main_image' %>
+    </p>
 
-<% if logged_in? %>
-  <% if @favorite.present? %>
-    <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
-  <% else %>
-    <%= link_to 'お気に入りする', favorites_path(park_id: @park.id), method: :post, class: 'btn btn-primary' %>
-  <% end %>
-<% end %>
-</div>
-<div class="col-sm-6">
-<p>
-<p><strong>紹介:</strong></p>
-  <%= @park.introduction %>
-</・p>
-
-<p>
-<p><strong>住所:</strong></p>
-  <%= @park.address %>
-</p>
-
-<p>
-  <p><strong> 施設</strong></p>
-  <% @park.institutions.each do |institution| %>
-    <td><%= image_tag institution.image.url %>|</td>
-  <% end %>
-</p>
-
-<p>
-  <p><strong> 遊具</strong></p>
-  <% @park.playgrounds.each do |playground| %>
-    <td><%= image_tag playground.image.url%>|</td>
-  <% end %>
-</p>
-</div>
-</div>
-
-<div class="container">
-
-
-<p><strong> 口コミ投稿</strong></P>
-
-<p><strong>カテゴリ検索</strong></P>
-<%= search_form_for @q, url: search_comments_path do |f| %>
-<%= f.collection_select :category_id_eq, Category.all, :id, :name, :prompt => "検索したいカテゴリを選択してください" %>
-<br>
-<%= f.hidden_field :park_id, value: @park.id %> <!--ほしい情報を'hidden_field'で入れてあげる-->
-<%= f.submit '検索'%>
-<% end %>
-
-  <% @comments.each do |comment|%>
-  <div class="card w-75 p">
-    <p>投稿者：<%= comment.user.nickname %>
-    <p>カテゴリー:<%= comment.category.name %></p>
-    <p><%= comment.content%></p>
-    <%= image_tag comment.image.url, class:'comment_image' if comment.image.present?%>
     <% if logged_in? %>
-      <%= link_to 'この口コミにコメントする', park_comment_path(@park, comment) %>
-      <% if comment.user_id == current_user.id %>
-        <%= link_to '編集', edit_park_comment_path(@park,comment) %>
-        <%= link_to '消去', park_comment_path(@park,comment), method: :delete, remote: true, data: { confirm: "本当に削除しますか?"} %></p>
+      <% if @favorite.present? %>
+        <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+      <% else %>
+        <%= link_to 'お気に入りする', favorites_path(park_id: @park.id), method: :post, class: 'btn btn-primary' %>
       <% end %>
-    <% else%>
-      <%= link_to 'ログインしてこの口コミにコメントする', new_session_path %>
     <% end %>
     </div>
-  <% end %>
+    <div class="col-sm-6">
 
-  <% if logged_in? %>
-    <%= link_to '口コミを投稿！', new_park_comment_path(@park) %>
-  <% else%>
-    <%= link_to 'ログインして口コミを投稿する！', new_session_path %>
-  <% end %>
+    <p><strong>紹介:</strong></p>
+    <p><%= @park.introduction %></p>
 
-<p><%= link_to '公園一覧に戻る', parks_path %></p>
-</div>
-</div>
+    <p><strong>住所:</strong></p>
+    <p><%= @park.address %></p>
+    <br>
+    <p><strong> 施設</strong></p>
+    <% @park.institutions.each do |institution| %>
+      <td><%= image_tag institution.image.url, class:"border border-dark"%></td>
+    <% end %>
+    <br>
+    <p><strong> 遊具</strong></p>
+    <% @park.playgrounds.each do |playground| %>
+      <td><%= image_tag playground.image.url, class:"border border-dark" %></td>
+    <% end %>
+    </div>
+  </div>
+  <hr>
+  <div class="container">
+    <br>
+    <p><h4> 口コミ投稿</h4></P>
+    <P>気になるカテゴリーで投稿内容を検索できます<br>
+
+    <% if logged_in? %>
+        <%= link_to '口コミを投稿！', new_park_comment_path(@park) %>
+      <% else%>
+        <%= link_to 'ログインして口コミを投稿する！', new_session_path %>
+      <% end %>☜ こちらから口コミ投稿してくださいね！</p>
+      <p>気になる口コミには質問できます。「この口コミにコメントする」からどうぞ</P>
+      <br>
+      カテゴリ検索:
+      <%= search_form_for @q, url: search_comments_path do |f| %>
+        <%= f.collection_select :category_id_eq, Category.all, :id, :name, :prompt => "検索したいカテゴリを選択してください" %>
+        <%= f.hidden_field :park_id, value: @park.id %> <!--ほしい情報を'hidden_field'で入れてあげる-->
+        <%= f.submit '検索'%></P>
+      <% end %>
+
+      <% @comments.each do |comment|%>
+        <div class="card w-75 p">
+          <p>投稿者：<%= comment.user.nickname %></p>
+          <p>カテゴリー:<%= comment.category.name %></p>
+          <p><%= comment.content%></p>
+          <%= image_tag comment.image.url, class:'comment_image' if comment.image.present?%>
+          <% if logged_in? %>
+            <%= link_to 'この口コミにコメントする', park_comment_path(@park, comment) %>
+            <% if comment.user_id == current_user.id %>
+              <%= link_to '編集', edit_park_comment_path(@park,comment) %>
+              <%= link_to '消去', park_comment_path(@park,comment), method: :delete, remote: true, data: { confirm: "本当に削除しますか?"} %>
+            <% end %>
+          <% else%>
+            <%= link_to 'ログインしてこの口コミにコメントする', new_session_path %>
+          <% end %>
+        </div>
+      <% end %>
+      <br>
+      <% if logged_in? %>
+        <%= link_to '口コミを投稿！', new_park_comment_path(@park) %>
+      <% else%>
+        <%= link_to 'ログインして口コミを投稿する！', new_session_path %>
+      <% end %>
+    <p><%= link_to '公園一覧に戻る', parks_path %></p>
+    </div>
+  </div>
 </div>

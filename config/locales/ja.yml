@@ -22,20 +22,24 @@ ja:
     attributes:
       # 各モデルのカラム名を記載
       user:
-        name: 名前
+        name: '名前'
+        nickname: 'ニックネーム'
         email: メールアドレス
         password: パスワード
       post:
-        content: 説明
-        image: 画像
+        content: コメント
+        image: '画像'
       comment:
-        comment: コメント内容
+        content: 'コメント内容'
+        image: 画像
+        category: 'カテゴリー'
       contact:
         name: 名前
         email: メールアドレス
         content: お問い合わせ内容
     errors:
       messages:
+        error: 'エラー'
         record_invalid: 'バリデーションに失敗しました: %{errors}'
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
@@ -76,7 +80,7 @@ ja:
       long: "%Y年%m月%d日(%a)"
       short: "%m/%d"
     month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月

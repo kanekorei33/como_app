@@ -4,7 +4,7 @@
 <%= form_with(model: [@park, @comment]) do |form| %>
   <% if comment.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(comment.errors.count, "error") %>  comment が保存できませんでした</h2>
+      <h2><%= pluralize(comment.errors.count, "件のエラー") %> のためコメントが保存できませんでした</h2>
 
       <ul>
         <% comment.errors.each do |error| %>
@@ -13,6 +13,7 @@
       </ul>
     </div>
   <% end %>
+  
   <%= form.collection_select :category_id, Category.all, :id, :name, :prompt => "投稿のカテゴリを選択してください" %>
 
   <div class="field">

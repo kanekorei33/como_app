@@ -20,6 +20,12 @@ class UsersController < ApplicationController
   end
 
   def show
+      unless logged_in?
+        redirect_to root_path and return
+      end
+      if current_user != @user
+        redirect_to root_path
+      end
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: current_user.id).pluck(:park_id)
     @favorite_list = Park.find(favorites)

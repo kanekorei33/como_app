@@ -1,7 +1,7 @@
 class ParksController < ApplicationController
   before_action :set_park, only: %i[ show edit update destroy ]
 
-  # GET /parks or /parks.json
+
   def top
     @playgrounds = Playground.all  #施設と遊具の情報を持ってくる
     @institutions = Institution.all
@@ -9,10 +9,7 @@ class ParksController < ApplicationController
     @parks = @parks_search.result
     @parks = @parks.where(park_institutions: Institution.where(institution_id: params[:q][:institution_id])) if params[:q].present? && params[:q][:name].present?
     @parks = @parks.where(park_playgrounds: playground.where(playground_id: params[:q][:playground_id])) if params[:q].present? && params[:q][:name].present?
-    #@q = Park.ransack(params[:q])
-    #@parks = @q.result(distinct: true)
   end
-    
   def index
     @parks = Park.all
   end
@@ -23,7 +20,6 @@ class ParksController < ApplicationController
     render "parks/index"
   end
 
-  # GET /parks/1 or /parks/1.json
   def show
     @favorite = current_user.favorites.find_by(park_id: @park.id) if logged_in?
     @comments = Comment.all
@@ -36,6 +32,14 @@ class ParksController < ApplicationController
 
   # GET /parks/new
   def new
+    unless logged_in?
+      redirect_to parks_path and return
+    end
+    if current_user != @user
+      unless current_user.admin?
+        redirect_to parks_path
+      end
+    end
     @park = Park.new
   end
 
@@ -91,15 +95,13 @@ class ParksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_park
-      @park = Park.find(params[:id])
-    end
+  def set_park
+    @park = Park.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def park_params
-      params.require(:park).permit(:name, :introduction, :address, :prefecture, :latitude, :longitude, :main_image, :sub_image1, :sub_image2,
-                                   :sub_image3, :sub_image4, :sub_image5, :sub_image6, :sub_image7, :sub_image8, :sub_image9, :sub_image10,
-                                   :sub_image11, :image_cache, :user, :user_id, { playground_ids: [] },{ institution_ids: [] })
-    end
+  def park_params
+    params.require(:park).permit(:name, :introduction, :address, :prefecture, :latitude, :longitude, :main_image, :sub_image1, :sub_image2,
+                                  :sub_image3, :sub_image4, :sub_image5, :sub_image6, :sub_image7, :sub_image8, :sub_image9, :sub_image10,
+                                  :sub_image11, :image_cache, :user, :user_id, { playground_ids: [] },{ institution_ids: [] })
+  end
 end
