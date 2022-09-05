@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show edit update destroy ]
 
-  # GET /comments or /comments.json
   def index
     @comments = Comment.all
     @q = Comment.ransack(params[:q])
@@ -18,7 +17,6 @@ class CommentsController < ApplicationController
     render "parks/show"
   end
 
-  # GET /comments/1 or /comments/1.json
   def show
     unless logged_in?
       redirect_to new_session_path, notece: "ログインしてください"
@@ -28,19 +26,16 @@ class CommentsController < ApplicationController
     @park = @comment.park
   end
 
-  # GET /comments/new
   def new
     @comment = Comment.new
     @park = Park.find(params[:park_id])
   end
 
-  # GET /comments/1/edit
   def edit
     @comment = Comment.find(params[:id])
     @park = @comment.park
   end
 
-  # POST /comments or /comments.json
   def create
     if logged_in?
       @comment = current_user.comments.build(comment_params)
@@ -55,11 +50,9 @@ class CommentsController < ApplicationController
       end
     end
   end
-  # PATCH/PUT /comments/1 or /comments/1.json
-  def update
 
+  def update
     respond_to do |format|
-      #binding.pry
       if @comment.update(comment_params)
         format.html { redirect_to park_path(params[:park_id]), notice: "口コミ編集しました" }
         format.json { render :show, status: :ok, location: @comment }
@@ -70,10 +63,8 @@ class CommentsController < ApplicationController
     end
   end
 
-  # DELETE /comments/1 or /comments/1.json
   def destroy
     @comment.destroy
-
     respond_to do |format|
       format.html { redirect_to park_path(params[:park_id]), notice: "口コミ削除しました" }
       format.json { head :no_content }
@@ -81,12 +72,10 @@ class CommentsController < ApplicationController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
   def set_comment
     @comment = Comment.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def comment_params
     params.require(:comment).permit(:content, :image, :image_cache, :category_id).merge(park_id: params[:park_id])
   end

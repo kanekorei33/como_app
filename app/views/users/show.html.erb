@@ -1,29 +1,29 @@
 <p id="notice"><%= notice %></p>
 <div class="container mt-5 ">
   <div class="text-center">
-			<h1><%= @user.nickname %>のページ</h1>
-			<div class="card card-container">
-				<td class="users-show-edit">ユーザーアイコン</td>
-				<div class="image_tag">
-					<% if @user.image.present? %>
-						<%= image_tag @user.image.url %>
-					<% else %>
-						<%= image_tag 'default.jpg' %>
-					<% end %>
-				</div>
-				<p>メールアドレス: <%= @user.email %></p>
-					<% if logged_in? %>
-						<% if current_user == @user %>
-							<p><%= link_to_if(@user, 'plofile_Edit', edit_user_path(@user)) %></p>
-						<% end %>
-					<% end %>
-						<p><td class="users-show-edit">お気に入りの公園</td></p>
-						<% if @favorite_list.present? %>
-							<% @favorite_list.each do |park| %>
-								<p><%= park.name %>:
-								<%= link_to "この公園ページへ行く", park_path(park) %></p>
-							<% end %>
-						<% end %>
-					</div>
-				</div>
+		<h1><%= @user.nickname %>のページ</h1>
+		<div class="card card-container">
+			<td class="users-show-edit">ユーザーアイコン</td>
+			<div class="image_tag">
+				<% if @user.image.present? %>
+					<%= image_tag @user.image.url %>
+				<% else %>
+					<%= image_tag 'default.jpg' %>
+				<% end %>
 			</div>
+			<p>メールアドレス: <%= @user.email %></p>
+			<% if logged_in? %>
+				<% if current_user == @user %>
+					<p><%= link_to_if(@user, 'plofile_Edit', edit_user_path(@user)) %></p>
+				<% end %>
+			<% end %>
+			<p><td class="users-show-edit">お気に入りの公園</td></p>
+			<% if @favorite_list.present? %>
+				<% @favorite_list.each do |park| %>
+					<p><%= park.name %>:
+					<%= link_to "この公園ページへ行く", park_path(park) %></p>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+</div>
