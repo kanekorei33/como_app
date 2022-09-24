@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
+    collection do
+      get 'map_index'
+    end
   end
   resources :users
   resources :users, only: [:show] do

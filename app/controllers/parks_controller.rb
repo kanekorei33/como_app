@@ -10,6 +10,7 @@ class ParksController < ApplicationController
     @parks = @parks.where(park_institutions: Institution.where(institution_id: params[:q][:institution_id])) if params[:q].present? && params[:q][:name].present?
     @parks = @parks.where(park_playgrounds: playground.where(playground_id: params[:q][:playground_id])) if params[:q].present? && params[:q][:name].present?
   end
+
   def index
     @parks = Park.all
   end
@@ -92,6 +93,10 @@ class ParksController < ApplicationController
       format.html { redirect_to parks_url, notice: "Park は消去されました" }
       format.json { head :no_content }
     end
+  end
+
+  def map_index
+    @parks = Park.all
   end
 
   private
