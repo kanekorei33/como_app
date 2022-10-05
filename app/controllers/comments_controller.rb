@@ -6,17 +6,6 @@ class CommentsController < ApplicationController
     @q = Comment.ransack(params[:q])
   end
 
-  def search
-    @q = Comment.ransack(params[:q]) # 送られてきたパラメータを元にテーブルからデータを検索する
-    @comments = @q.result.includes(:category) # 検索結果をActiveRecord_Relationのオブジェクトに変換
-    unless @comments.blank?
-      @park = @comments.first.park
-    else
-      @park = Park.find(params[:q][:park_id])
-    end
-    render "parks/show"
-  end
-
   def show
     unless logged_in?
       redirect_to new_session_path, notece: "ログインしてください"

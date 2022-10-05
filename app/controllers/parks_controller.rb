@@ -1,7 +1,6 @@
 class ParksController < ApplicationController
   before_action :set_park, only: %i[ show edit update destroy ]
 
-
   def top
     @playgrounds = Playground.all  #施設と遊具の情報を持ってくる
     @institutions = Institution.all
@@ -27,7 +26,7 @@ class ParksController < ApplicationController
     @category = Category.all
     @q = Comment.ransack(params[:q])
     @comments = @q.result #railsで使える形式に変換
-    @comments = Comments.where(Categiry.where(category_id: params[:q][:icategory_id])) if params[:q].present? && params[:q][:name].present?
+    @comments = Comment.where(category_id: params[:q][:category_id]) if params[:q].present? && params[:q][:category_id].present?
     @comments = @comments.where(park_id: params[:id])
   end
 
